@@ -14,11 +14,11 @@
 
         <!-- Android theme override -->
         <item name="android:scrollbarThumbVertical">@color/light_grey_color</item>
-        <item name="colorAccent">@color/primary_color</item>
-        <item name="colorPrimary">@color/primary_color</item>
-        <item name="android:colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@color/led_registration_in_progress</item>
+        <item name="colorPrimary">@color/led_registration_in_progress</item>
+        <item name="android:colorPrimary">@color/led_registration_in_progress</item>
         <!-- Comment out the following line to disable system's status bar coloring -->
-        <item name="android:colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="android:colorPrimaryDark">@color/led_registration_in_progress</item>
         <item name="android:navigationBarColor">@color/voip_dark_color</item>
 
         <item name="android:textColorPrimary">@color/light_primary_text_color</item>
