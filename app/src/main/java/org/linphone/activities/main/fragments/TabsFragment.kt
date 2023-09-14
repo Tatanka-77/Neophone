@@ -30,7 +30,6 @@ import org.linphone.R
 import org.linphone.activities.GenericFragment
 import org.linphone.activities.main.viewmodels.TabsViewModel
 import org.linphone.activities.navigateToCallHistory
-import org.linphone.activities.navigateToChatRooms
 import org.linphone.activities.navigateToContacts
 import org.linphone.activities.navigateToDialer
 import org.linphone.databinding.TabsFragmentBinding
@@ -86,18 +85,6 @@ class TabsFragment : GenericFragment<TabsFragmentBinding>(), NavController.OnDes
                 findNavController().currentDestination?.id ?: -1
             )
             navigateToDialer()
-        }
-
-        binding.setChatClickListener {
-            when (findNavController().currentDestination?.id) {
-                R.id.masterContactsFragment -> sharedViewModel.updateContactsAnimationsBasedOnDestination.value = Event(
-                    R.id.masterChatRoomsFragment
-                )
-                R.id.dialerFragment -> sharedViewModel.updateDialerAnimationsBasedOnDestination.value = Event(
-                    R.id.masterChatRoomsFragment
-                )
-            }
-            navigateToChatRooms()
         }
     }
 

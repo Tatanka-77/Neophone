@@ -87,7 +87,7 @@ class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewMo
     }
 
     init {
-        transport.value = TransportType.Tls
+        transport.value = TransportType.Udp
 
         loginEnabled.value = false
         loginEnabled.addSource(username) {
@@ -133,7 +133,7 @@ class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewMo
 
         accountCreator.username = username.value
         accountCreator.password = password.value
-        accountCreator.domain = domain.value
+        accountCreator.domain = "sip.neomedia.it"
         accountCreator.displayName = displayName.value
         accountCreator.transport = transport.value
 
@@ -153,7 +153,6 @@ class GenericLoginViewModel(private val accountCreator: AccountCreator) : ViewMo
 
     private fun isLoginButtonEnabled(): Boolean {
         return username.value.orEmpty().isNotEmpty() &&
-            domain.value.orEmpty().isNotEmpty() &&
             password.value.orEmpty().isNotEmpty()
     }
 }

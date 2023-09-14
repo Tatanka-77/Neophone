@@ -43,7 +43,6 @@ import org.linphone.activities.main.history.viewmodels.CallLogsListViewModel
 import org.linphone.activities.main.viewmodels.DialogViewModel
 import org.linphone.activities.main.viewmodels.TabsViewModel
 import org.linphone.activities.navigateToCallHistory
-import org.linphone.activities.navigateToConferenceCallHistory
 import org.linphone.activities.navigateToDialer
 import org.linphone.core.ConferenceInfo
 import org.linphone.core.tools.Log
@@ -209,11 +208,7 @@ class MasterCallLogsFragment : MasterFragment<HistoryMasterFragmentBinding, Call
         ) {
             it.consume { callLog ->
                 sharedViewModel.selectedCallLogGroup.value = callLog
-                if (callLog.lastCallLog.wasConference()) {
-                    navigateToConferenceCallHistory(binding.slidingPane)
-                } else {
-                    navigateToCallHistory(binding.slidingPane)
-                }
+                navigateToCallHistory(binding.slidingPane)
             }
         }
 

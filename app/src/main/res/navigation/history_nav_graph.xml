@@ -19,18 +19,8 @@
         tools:layout="@layout/history_detail_fragment"
         android:label="DetailCallLogFragment" />
 
-    <fragment
-        android:id="@+id/detailConferenceCallLogFragment"
-        android:name="org.linphone.activities.main.history.fragments.DetailConferenceCallLogFragment"
-        tools:layout="@layout/history_conf_detail_fragment"
-        android:label="DetailConferenceCallLogFragment" />
-
     <action
         android:id="@+id/action_global_detailCallLogFragment"
         app:destination="@id/detailCallLogFragment" />
-
-    <action
-        android:id="@+id/action_global_detailConferenceCallLogFragment"
-        app:destination="@id/detailConferenceCallLogFragment" />
 
 </navigation>

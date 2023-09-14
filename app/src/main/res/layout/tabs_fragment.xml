@@ -15,9 +15,6 @@
             name="dialerClickListener"
             type="android.view.View.OnClickListener"/>
         <variable
-            name="chatClickListener"
-            type="android.view.View.OnClickListener"/>
-        <variable
             name="viewModel"
             type="org.linphone.activities.main.viewmodels.TabsViewModel" />
     </data>
@@ -116,13 +113,10 @@
 
         <ImageView
             android:id="@+id/chat"
-            android:onClick="@{chatClickListener}"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:contentDescription="@string/content_description_menu_chat"
             android:padding="15dp"
-            android:src="@drawable/footer_chat"
             android:background="@drawable/footer_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guidelineRight" />

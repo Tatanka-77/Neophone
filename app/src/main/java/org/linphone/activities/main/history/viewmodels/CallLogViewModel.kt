@@ -26,7 +26,6 @@ import kotlin.collections.ArrayList
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.activities.main.conference.data.ConferenceSchedulingParticipantData
 import org.linphone.contact.GenericContactViewModel
 import org.linphone.core.*
 import org.linphone.core.tools.Log
@@ -133,8 +132,6 @@ class CallLogViewModel(val callLog: CallLog, private val isRelated: Boolean = fa
     val isConferenceCallLog = callLog.wasConference()
 
     val conferenceSubject = callLog.conferenceInfo?.subject
-    val conferenceParticipantsData = MutableLiveData<ArrayList<ConferenceSchedulingParticipantData>>()
-    val organizerParticipantData = MutableLiveData<ConferenceSchedulingParticipantData>()
     val conferenceTime = MutableLiveData<String>()
     val conferenceDate = MutableLiveData<String>()
 
@@ -175,25 +172,6 @@ class CallLogViewModel(val callLog: CallLog, private val isRelated: Boolean = fa
                     )
                 }
                 val organizer = conferenceInfo.organizer
-                if (organizer != null) {
-                    organizerParticipantData.value =
-                        ConferenceSchedulingParticipantData(
-                            organizer,
-                            showLimeBadge = false,
-                            showDivider = false
-                        )
-                }
-                val list = arrayListOf<ConferenceSchedulingParticipantData>()
-                for (participant in conferenceInfo.participants) {
-                    list.add(
-                        ConferenceSchedulingParticipantData(
-                            participant,
-                            showLimeBadge = false,
-                            showDivider = true
-                        )
-                    )
-                }
-                conferenceParticipantsData.value = list
             }
         }
     }
@@ -206,9 +184,6 @@ class CallLogViewModel(val callLog: CallLog, private val isRelated: Boolean = fa
     fun destroy() {
         if (!isRelated) {
             relatedCallLogs.value.orEmpty().forEach(CallLogViewModel::destroy)
-            organizerParticipantData.value?.destroy()
-            conferenceParticipantsData.value.orEmpty()
-                .forEach(ConferenceSchedulingParticipantData::destroy)
         }
     }
 

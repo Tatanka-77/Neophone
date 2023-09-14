@@ -40,7 +40,6 @@ import org.linphone.core.tools.Log
 abstract class GenericFragment<T : ViewDataBinding> : Fragment() {
     companion object {
         val emptyFragmentsIds = arrayListOf(
-            R.id.emptyChatFragment,
             R.id.emptyContactFragment,
             R.id.emptySettingsFragment,
             R.id.emptyCallHistoryFragment

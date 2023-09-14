@@ -22,7 +22,7 @@
     </plurals>
     <string name="today">Oggi</string>
     <string name="transport_tcp">TCP</string>
-    <string name="domain">Dominio</string>
+    <string name="domain">Server (sip.neomedia.it) </string>
     <string name="password">Password</string>
     <string name="status_connected">Connesso</string>
     <string name="status_not_connected">Non connesso</string>
@@ -55,7 +55,7 @@
     <string name="contact_cant_be_deleted">Questo contatto non può essere eliminato</string>
     <string name="debug_popup_title">Debug</string>
     <string name="contacts_ldap_query_more_results_available">Sono disponibili più risultati, affina la ricerca</string>
-    <string name="dialer_address_bar_hint">Inserisci un numero o un indirizzo</string>
+    <string name="dialer_address_bar_hint">Inserire un numero da chiamare</string>
     <string name="debug_popup_send_logs">Invia i log</string>
     <string name="debug_popup_disable_logs">Disabilita i log</string>
     <string name="debug_popup_enable_logs">Abilita i log</string>
@@ -118,12 +118,12 @@
     <string name="assistant_linphone_login_desc">Inserisci il nome utente e la password dell\'account &appName;</string>
     <string name="assistant_login_with_username">Usa il tuo nome utente e password al posto del tuo numero di telefono</string>
     <string name="assistant_login_forgotten_password">Hai dimenticato la password\?</string>
-    <string name="assistant_login_desc">Inserisci il tuo nome utente e password con il tuo dominio SIP</string>
+    <string name="assistant_login_desc">Inserisci il tuo nome utente e la password forniti da Neomedia</string>
     <string name="assistant_create_account_part_email">Inserisci un nome utente, un\'e-mail e una password per il tuo account &appName;</string>
     <string name="service_auto_start_description">&appName; è stato avviato automaticamente</string>
     <string name="chat_settings_auto_download_never">Mai</string>
     <string name="chat_settings_auto_download_max_size_summary">in byte</string>
-    <string name="about_privacy_policy">Visita la nostra politica sulla privacy</string>
+    <string name="about_privacy_policy"> Neomedia Srl, Viale del Fante 44/a Palermo (PA) TEL: 091516511 </string>
     <string name="assistant_choose_country">Scegli una nazione</string>
     <string name="network_settings_wifi_only_title">Usa solo Wi-Fi</string>
     <string name="network_settings_allow_ipv6_title">Permetti IPv6</string>
@@ -144,7 +144,7 @@
     <string name="assistant_error_invalid_credentials">L\'account non esiste o la password non corrisponde</string>
     <string name="account_settings_password_summary">Devi reinserire la tua password se modifichi il tuo nome utente e/o il dominio</string>
     <string name="sync_account_name">&appName; contatti</string>
-    <string name="about_weblate_translation">Aiutaci a tradurre &appName;</string>
+    <string name="about_weblate_translation"> Powered by &appName;</string>
     <string name="select_your_country">Seleziona il tuo paese</string>
     <string name="international_prefix">Prefisso</string>
     <string name="assistant_choose_country_title">Nome della nazione o prefisso</string>
@@ -185,4 +185,54 @@
     <string name="assistant_fetch_apply">Recupera e applica</string>
     <string name="settings_default_account_subtitle">Account predefinito</string>
     <string name="audio_settings_echo_cancellation_calibration_failed">Calibrazione fallita</string>
+    <string name="assistant_welcome_desc">L\'assistente ti aiuterà a configurare il tuo account Neomedia Voip.</string>
+    <string name="assistant_welcome_title">Benvenuto</string>
+    <string name="assistant_login_generic">Configura il tuo Account</string>
+    <string name="assistant_read_and_agree_terms">Spunta la casella dopo aver visionato \' %1$s e %2$s</string>
+    <string name="assistant_display_name_optional">Nome da visualizzare (opzionale)</string>
+    <string name="incoming_call_notification_hangup_action_label">Rifiuta</string>
+    <string name="incoming_call_notification_answer_action_label">Accetta</string>
+    <string name="missed_call_notification_title">Chiamata Persa</string>
+    <string name="missed_call_notification_body">Chiamata Persa da %s</string>
+    <string name="operation_in_progress_wait">Operazione in corso Attendere</string>
+    <string name="about">Info</string>
+    <string name="about_link" translatable="false">https://www.neomedia.it</string>
+    <string name="call_action_numpad">Tastiera</string>
+    <string name="call_action_statistics">Statistiche</string>
+    <string name="call_action_transfer_call">Transferimento chiamata</string>
+    <string name="call_action_add_call">Nuova Chiamata</string>
+    <string name="call_action_calls_list">Storico Chiamate</string>
+    <string name="call_notification_active">Chiamata in corso</string>
+    <string name="notification_channel_incoming_call_name">&appName; Chiamata in arrivo</string>
+    <string name="incoming_call_notification_title">Chiamata in Arrivo</string>
+    <string name="assistant_generic_account">Configura il tuo Account Neomedia</string>
+    <string name="settings_advanced_title">Avanzate</string>
+    <string name="advanced_settings_send_debug_logs_title">Invia logs</string>
+    <string name="advanced_settings_background_mode_title">Modalità background</string>
+    <string name="advanced_settings_background_mode_summary">Mostra una notifica per mantenere l\'app in esecuzione</string>
+    <string name="advanced_settings_debug_mode_title">Debug logs</string>
+    <string name="advanced_settings_auto_start_title">Carica all\'avvio</string>
+    <string name="advanced_settings_dark_mode_title">Dark theme</string>
+    <string name="advanced_settings_dark_mode_label_auto">Auto</string>
+    <string name="advanced_settings_dark_mode_label_no">No</string>
+    <string name="advanced_settings_dark_mode_label_yes">Si</string>
+    <string name="advanced_settings_animations_title">Animazioni</string>
+    <string name="advanced_settings_device_name_title">Nome dispositivo</string>
+    <string name="advanced_settings_device_name_summary">I cambi saranno effettivi al prossimo riavvio</string>
+    <string name="advanced_settings_remote_provisioning_url_title">Remote provisioning URL</string>
+    <string name="advanced_settings_logs_server_url_title">Logs upload server URL</string>
+    <string name="advanced_settings_logs_server_url_summary">Do not edit unless you know what you are doing!</string>
+    <string name="advanced_settings_android_title">Android</string>
+    <string name="advanced_settings_go_to_battery_optimization_settings">Ottimizzazione batteria</string>
+    <string name="advanced_settings_go_to_power_manager_settings">Impostazioni alimentazioni</string>
+    <string name="advanced_settings_go_to_android_app_settings">Impostazioni app Android</string>
+    <string name="advanced_settings_vfs_title">Attiva crittografia</string>
+    <string name="advanced_settings_vfs_summary">Una volta abilitata non può più essere disattivata!</string>
+    <string name="advanced_settings_reset_debug_logs_title">Reset logs</string>
+    <string name="advanced_settings_debug_title">Opzioni debug</string>
+    <string name="advanced_settings_other_title">Altre impostazioni</string>
+    <string name="advanced_settings_disable_fragment_security_title">Disabilita modalità sicura UI</string>
+    <string name="advanced_settings_disable_fragment_security_summary">Permetti la cattura di schermate sensibili</string>
+
+
 </resources>

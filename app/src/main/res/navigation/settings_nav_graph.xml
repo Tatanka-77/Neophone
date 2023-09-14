@@ -42,11 +42,6 @@
         tools:layout="@layout/settings_call_fragment"
         android:label="CallSettingsFragment" />
     <fragment
-        android:id="@+id/chatSettingsFragment"
-        android:name="org.linphone.activities.main.settings.fragments.ChatSettingsFragment"
-        tools:layout="@layout/settings_chat_fragment"
-        android:label="ChatSettingsFragment" />
-    <fragment
         android:id="@+id/contactsSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.ContactsSettingsFragment"
         tools:layout="@layout/settings_contacts_fragment"
@@ -82,9 +77,6 @@
     <action
         android:id="@+id/action_global_networkSettingsFragment"
         app:destination="@id/networkSettingsFragment" />
-    <action
-        android:id="@+id/action_global_chatSettingsFragment"
-        app:destination="@id/chatSettingsFragment" />
     <action
         android:id="@+id/action_global_contactsSettingsFragment"
         app:destination="@id/contactsSettingsFragment" />

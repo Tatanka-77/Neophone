@@ -412,7 +412,7 @@
 
     <!-- Assistant -->
     <string name="assistant_welcome_title">Welcome</string>
-    <string name="assistant_welcome_desc">This assistant will help you configure and use your SIP account.</string>
+    <string name="assistant_welcome_desc">This assistant will help you configure and use your Neomedia Voip account.</string>
     <string name="assistant_create_account">Create account</string>
     <string name="assistant_login_linphone">Use &appName; account</string>
     <string name="assistant_login_generic">Use SIP account</string>

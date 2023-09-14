@@ -153,12 +153,6 @@ class SettingsFragment : SecureFragment<SettingsFragmentBinding>() {
             }
         }
 
-        viewModel.chatSettingsListener = object : SettingListenerStub() {
-            override fun onClicked() {
-                navigateToChatSettings(binding.slidingPane)
-            }
-        }
-
         viewModel.networkSettingsListener = object : SettingListenerStub() {
             override fun onClicked() {
                 navigateToNetworkSettings(binding.slidingPane)

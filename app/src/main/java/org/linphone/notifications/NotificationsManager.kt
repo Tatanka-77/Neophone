@@ -27,7 +27,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Bundle
 import android.webkit.MimeTypeMap
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -40,7 +39,6 @@ import androidx.navigation.NavDeepLinkBuilder
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.activities.chat_bubble.ChatBubbleActivity
 import org.linphone.activities.main.MainActivity
 import org.linphone.activities.voip.CallActivity
 import org.linphone.compatibility.Compatibility
@@ -186,14 +184,6 @@ class NotificationsManager(private val context: Context) {
                 )
                 return
             }
-
-            if (notifiable.messages.isNotEmpty()) {
-                displayChatNotifiable(room, notifiable)
-            } else {
-                Log.w(
-                    "[Notifications Manager] No message to display in received aggregated messages"
-                )
-            }
         }
 
         override fun onReactionRemoved(
@@ -262,13 +252,6 @@ class NotificationsManager(private val context: Context) {
             }
 
             val notifiable = createChatReactionNotifiable(chatRoom, reaction.body, address, message)
-            if (notifiable.messages.isNotEmpty()) {
-                displayChatNotifiable(chatRoom, notifiable)
-            } else {
-                Log.e(
-                    "[Notifications Manager] Notifiable is empty but we should have displayed the reaction!"
-                )
-            }
         }
 
         override fun onChatRoomRead(core: Core, chatRoom: ChatRoom) {
@@ -839,43 +822,6 @@ class NotificationsManager(private val context: Context) {
         return LinphoneUtils.getChatRoomId(chatRoom).hashCode()
     }
 
-    private fun displayChatNotifiable(room: ChatRoom, notifiable: Notifiable) {
-        val localAddress = room.localAddress.asStringUriOnly()
-        val peerAddress = room.peerAddress.asStringUriOnly()
-        val args = Bundle()
-        args.putString("RemoteSipUri", peerAddress)
-        args.putString("LocalSipUri", localAddress)
-
-        val pendingIntent = NavDeepLinkBuilder(context)
-            .setComponentName(MainActivity::class.java)
-            .setGraph(R.navigation.main_nav_graph)
-            .setDestination(R.id.masterChatRoomsFragment)
-            .setArguments(args)
-            .createPendingIntent()
-
-        // PendingIntents attached to bubbles must be mutable
-        val target = Intent(context, ChatBubbleActivity::class.java)
-        target.putExtra("RemoteSipUri", peerAddress)
-        target.putExtra("LocalSipUri", localAddress)
-        val bubbleIntent = PendingIntent.getActivity(
-            context,
-            notifiable.notificationId,
-            target,
-            Compatibility.getUpdateCurrentPendingIntentFlag()
-        )
-
-        val id = LinphoneUtils.getChatRoomId(room.localAddress, room.peerAddress)
-        val me = coreContext.contactsManager.getMePerson(room.localAddress)
-        val notification = createMessageNotification(
-            notifiable,
-            pendingIntent,
-            bubbleIntent,
-            id,
-            me
-        )
-        notify(notifiable.notificationId, notification, CHAT_TAG)
-    }
-
     private fun updateChatNotifiableWithMessages(
         notifiable: Notifiable,
         room: ChatRoom,
@@ -1007,8 +953,6 @@ class NotificationsManager(private val context: Context) {
             isOutgoing = true
         )
         notifiable.messages.add(reply)
-
-        displayChatNotifiable(message.chatRoom, notifiable)
     }
 
     fun dismissChatNotification(room: ChatRoom): Boolean {

@@ -138,31 +138,10 @@
 
                     <include
                         layout="@layout/settings_widget_basic"
-                        android:visibility="@{viewModel.showVideoSettings ? View.VISIBLE : View.GONE}"
-                        linphone:listener="@{viewModel.videoSettingsListener}"
-                        linphone:title="@{@string/settings_video_title}"
-                        linphone:icon="@{@drawable/settings_video}" />
-
-                    <include
-                        layout="@layout/settings_widget_basic"
                         android:visibility="@{viewModel.showCallSettings ? View.VISIBLE : View.GONE}"
                         linphone:listener="@{viewModel.callSettingsListener}"
                         linphone:title="@{@string/settings_call_title}"
                         linphone:icon="@{@drawable/settings_call}" />
-
-                    <include
-                        layout="@layout/settings_widget_basic"
-                        android:visibility="@{viewModel.showConferencesSettings ? View.VISIBLE : View.GONE}"
-                        linphone:listener="@{viewModel.conferencesSettingsListener}"
-                        linphone:title="@{@string/settings_conferences_title}"
-                        linphone:icon="@{@drawable/settings_conferences}" />
-
-                    <include
-                        layout="@layout/settings_widget_basic"
-                        android:visibility="@{viewModel.showChatSettings ? View.VISIBLE : View.GONE}"
-                        linphone:listener="@{viewModel.chatSettingsListener}"
-                        linphone:title="@{@string/settings_chat_title}"
-                        linphone:icon="@{@drawable/settings_chat}" />
 
                     <include
                         layout="@layout/settings_widget_basic"
