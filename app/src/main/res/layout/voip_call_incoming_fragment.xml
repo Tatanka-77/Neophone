@@ -175,12 +175,6 @@
             app:layout_constraintHeight_max="400dp"
             app:layout_constraintVertical_weight="2">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:entries="@{callsViewModel.currentCallData.conferenceParticipants}"
-                app:layout="@{@layout/voip_conference_incoming_participant_cell}" />
 
         </androidx.core.widget.NestedScrollView>
 

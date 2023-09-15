@@ -45,8 +45,6 @@ import org.linphone.activities.main.settings.fragments.ContactsSettingsFragment
 import org.linphone.activities.main.settings.fragments.SettingsFragment
 import org.linphone.activities.main.sidemenu.fragments.SideMenuFragment
 import org.linphone.activities.voip.CallActivity
-import org.linphone.activities.voip.fragments.ConferenceCallFragment
-import org.linphone.activities.voip.fragments.ConferenceParticipantsFragment
 import org.linphone.activities.voip.fragments.IncomingCallFragment
 import org.linphone.activities.voip.fragments.OutgoingCallFragment
 import org.linphone.activities.voip.fragments.SingleCallFragment
@@ -554,16 +552,6 @@ internal fun CallActivity.navigateToActiveCall() {
         findNavController(R.id.nav_host_fragment).navigate(
             R.id.action_global_singleCallFragment,
             null,
-            popupTo(R.id.conferenceCallFragment, true)
-        )
-    }
-}
-
-internal fun CallActivity.navigateToConferenceCall() {
-    if (findNavController(R.id.nav_host_fragment).currentDestination?.id != R.id.conferenceCallFragment) {
-        findNavController(R.id.nav_host_fragment).navigate(
-            R.id.action_global_conferenceCallFragment,
-            null,
             popupTo(R.id.singleCallFragment, true)
         )
     }
@@ -613,26 +601,6 @@ internal fun SingleCallFragment.navigateToCallsList() {
     }
 }
 
-internal fun SingleCallFragment.navigateToConferenceParticipants() {
-    if (findNavController().currentDestination?.id == R.id.singleCallFragment) {
-        findNavController().navigate(
-            R.id.action_singleCallFragment_to_conferenceParticipantsFragment,
-            null,
-            popupTo()
-        )
-    }
-}
-
-internal fun SingleCallFragment.navigateToConferenceLayout() {
-    if (findNavController().currentDestination?.id == R.id.singleCallFragment) {
-        findNavController().navigate(
-            R.id.action_singleCallFragment_to_conferenceLayoutFragment,
-            null,
-            popupTo()
-        )
-    }
-}
-
 internal fun SingleCallFragment.navigateToIncomingCall() {
     if (findNavController().currentDestination?.id == R.id.singleCallFragment) {
         findNavController().navigate(
@@ -649,56 +617,6 @@ internal fun SingleCallFragment.navigateToOutgoingCall() {
             R.id.action_global_outgoingCallFragment,
             null,
             popupTo(R.id.singleCallFragment, true)
-        )
-    }
-}
-
-internal fun ConferenceCallFragment.navigateToCallsList() {
-    if (findNavController().currentDestination?.id == R.id.conferenceCallFragment) {
-        findNavController().navigate(
-            R.id.action_conferenceCallFragment_to_callsListFragment,
-            null,
-            popupTo()
-        )
-    }
-}
-
-internal fun ConferenceCallFragment.navigateToConferenceParticipants() {
-    if (findNavController().currentDestination?.id == R.id.conferenceCallFragment) {
-        findNavController().navigate(
-            R.id.action_conferenceCallFragment_to_conferenceParticipantsFragment,
-            null,
-            popupTo()
-        )
-    }
-}
-
-internal fun ConferenceCallFragment.navigateToConferenceLayout() {
-    if (findNavController().currentDestination?.id == R.id.conferenceCallFragment) {
-        findNavController().navigate(
-            R.id.action_conferenceCallFragment_to_conferenceLayoutFragment,
-            null,
-            popupTo()
-        )
-    }
-}
-
-internal fun ConferenceCallFragment.refreshConferenceFragment() {
-    if (findNavController().currentDestination?.id == R.id.conferenceCallFragment) {
-        findNavController().navigate(
-            R.id.action_global_conferenceCallFragment,
-            null,
-            popupTo(R.id.conferenceCallFragment, true)
-        )
-    }
-}
-
-internal fun ConferenceParticipantsFragment.navigateToAddParticipants() {
-    if (findNavController().currentDestination?.id == R.id.conferenceParticipantsFragment) {
-        findNavController().navigate(
-            R.id.action_conferenceParticipantsFragment_to_conferenceAddParticipantsFragment,
-            null,
-            popupTo(R.id.conferenceAddParticipantsFragment, true)
         )
     }
 }

@@ -141,17 +141,6 @@ class CallActivity : ProximitySensorActivity() {
             this
         ) { callData ->
             val call = callData.call
-            if (call.conference == null) {
-                Log.i(
-                    "[Call Activity] Current call isn't linked to a conference, switching to SingleCall fragment"
-                )
-                navigateToActiveCall()
-            } else {
-                Log.i(
-                    "[Call Activity] Current call is linked to a conference, switching to ConferenceCall fragment"
-                )
-                navigateToConferenceCall()
-            }
         }
 
         callsViewModel.askPermissionEvent.observe(
@@ -160,31 +149,6 @@ class CallActivity : ProximitySensorActivity() {
             it.consume { permission ->
                 Log.i("[Call Activity] Asking for $permission permission")
                 requestPermissions(arrayOf(permission), 0)
-            }
-        }
-
-        conferenceViewModel.conferenceExists.observe(
-            this
-        ) { exists ->
-            if (exists) {
-                Log.i(
-                    "[Call Activity] Found active conference, changing  switching to ConferenceCall fragment"
-                )
-                navigateToConferenceCall()
-            } else if (coreContext.core.callsNb > 0) {
-                Log.i(
-                    "[Call Activity] Conference no longer exists, switching to SingleCall fragment"
-                )
-                navigateToActiveCall()
-            }
-        }
-
-        conferenceViewModel.isConferenceLocallyPaused.observe(
-            this
-        ) { paused ->
-            if (!paused) {
-                Log.i("[Call Activity] Entered conference, make sure conference fragment is active")
-                navigateToConferenceCall()
             }
         }
 

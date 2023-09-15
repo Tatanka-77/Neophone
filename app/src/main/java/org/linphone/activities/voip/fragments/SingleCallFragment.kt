@@ -34,8 +34,6 @@ import org.linphone.R
 import org.linphone.activities.main.MainActivity
 import org.linphone.activities.main.viewmodels.DialogViewModel
 import org.linphone.activities.navigateToCallsList
-import org.linphone.activities.navigateToConferenceLayout
-import org.linphone.activities.navigateToConferenceParticipants
 import org.linphone.activities.navigateToIncomingCall
 import org.linphone.activities.navigateToOutgoingCall
 import org.linphone.activities.voip.viewmodels.CallsViewModel
@@ -119,14 +117,6 @@ class SingleCallFragment : GenericVideoPreviewFragment<VoipSingleCallFragmentBin
             }
         }
 
-        controlsViewModel.goToConferenceParticipantsListEvent.observe(
-            viewLifecycleOwner
-        ) {
-            it.consume {
-                navigateToConferenceParticipants()
-            }
-        }
-
         controlsViewModel.goToChatEvent.observe(
             viewLifecycleOwner
         ) {
@@ -140,14 +130,6 @@ class SingleCallFragment : GenericVideoPreviewFragment<VoipSingleCallFragmentBin
         ) {
             it.consume {
                 navigateToCallsList()
-            }
-        }
-
-        controlsViewModel.goToConferenceLayoutSettingsEvent.observe(
-            viewLifecycleOwner
-        ) {
-            it.consume {
-                navigateToConferenceLayout()
             }
         }
 
