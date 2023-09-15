@@ -91,7 +91,8 @@ class PhoneNumberUtils {
         fun vcardParamStringToAddressBookLabel(resources: Resources, label: String): String {
             if (label.isEmpty()) return label
             val type = labelToType(label)
-            return ContactsContract.CommonDataKinds.Phone.getTypeLabel(resources, type, label).toString()
+            return ContactsContract.CommonDataKinds.Phone.getTypeLabel(resources, type, label)
+                .toString()
         }
 
         private fun labelToType(label: String): Int {

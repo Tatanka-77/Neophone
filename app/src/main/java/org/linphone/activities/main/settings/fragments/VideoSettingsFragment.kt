@@ -63,7 +63,8 @@ class VideoSettingsFragment : GenericSettingFragment<SettingsVideoFragmentBindin
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        val granted =
+            grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
         if (granted) {
             Log.i("[Video Settings] CAMERA permission granted")
             coreContext.core.reloadVideoDevices()

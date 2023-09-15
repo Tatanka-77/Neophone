@@ -60,7 +60,8 @@ class DialerViewModel : LogsUploadViewModel() {
         MutableLiveData<Event<String>>()
     }
 
-    private val vibrator = coreContext.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    private val vibrator =
+        coreContext.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
     private var addressWaitingNetworkToBeCalled: String? = null
     private var timeAtWitchWeTriedToCall: Long = 0

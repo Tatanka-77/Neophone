@@ -48,7 +48,11 @@ class BootReceiver : BroadcastReceiver() {
     private fun startService(context: Context) {
         val serviceChannel = context.getString(R.string.notification_channel_service_id)
         val notificationManager = NotificationManagerCompat.from(context)
-        if (Compatibility.getChannelImportance(notificationManager, serviceChannel) == NotificationManagerCompat.IMPORTANCE_NONE) {
+        if (Compatibility.getChannelImportance(
+                notificationManager,
+                serviceChannel
+            ) == NotificationManagerCompat.IMPORTANCE_NONE
+        ) {
             Log.w("[Boot Receiver] Service channel is disabled!")
             return
         }

@@ -53,7 +53,8 @@ class ConferenceViewModel : ViewModel() {
     val conferenceParticipants = MutableLiveData<List<ConferenceParticipantData>>()
     val conferenceParticipantDevices = MutableLiveData<List<ConferenceParticipantDeviceData>>()
     val conferenceDisplayMode = MutableLiveData<ConferenceDisplayMode>()
-    val activeSpeakerConferenceParticipantDevices = MediatorLiveData<List<ConferenceParticipantDeviceData>>()
+    val activeSpeakerConferenceParticipantDevices =
+        MediatorLiveData<List<ConferenceParticipantDeviceData>>()
 
     val isRecording = MutableLiveData<Boolean>()
     val isRemotelyRecorded = MutableLiveData<Boolean>()
@@ -133,9 +134,11 @@ class ConferenceViewModel : ViewModel() {
                     speakingParticipant.value?.videoEnabled?.value = false
                     allParticipantsLeftEvent.value = Event(true)
                 }
+
                 2 -> {
                     secondParticipantJoinedEvent.value = Event(true)
                 }
+
                 else -> {}
             }
         }
@@ -189,10 +192,12 @@ class ConferenceViewModel : ViewModel() {
                         Log.i("[Conference] Entered conference")
                         isConferenceLocallyPaused.value = false
                     }
+
                     ParticipantDevice.State.OnHold -> {
                         Log.i("[Conference] Left conference")
                         isConferenceLocallyPaused.value = true
                     }
+
                     else -> {}
                 }
             }
@@ -223,15 +228,18 @@ class ConferenceViewModel : ViewModel() {
 
         override fun onStateChanged(conference: Conference, state: Conference.State) {
             Log.i("[Conference] State changed: $state")
-            isVideoConference.value = conference.currentParams.isVideoEnabled && !corePreferences.disableVideo
+            isVideoConference.value =
+                conference.currentParams.isVideoEnabled && !corePreferences.disableVideo
 
             when (state) {
                 Conference.State.Created -> {
                     configureConference(conference)
                 }
+
                 Conference.State.TerminationPending -> {
                     terminateConference(conference)
                 }
+
                 else -> {}
             }
         }
@@ -282,9 +290,10 @@ class ConferenceViewModel : ViewModel() {
         conferenceParticipants.value = arrayListOf()
         conferenceParticipantDevices.value = arrayListOf()
         activeSpeakerConferenceParticipantDevices.addSource(conferenceParticipantDevices) {
-            activeSpeakerConferenceParticipantDevices.value = conferenceParticipantDevices.value.orEmpty().drop(
-                1
-            )
+            activeSpeakerConferenceParticipantDevices.value =
+                conferenceParticipantDevices.value.orEmpty().drop(
+                    1
+                )
         }
 
         subject.value = AppUtils.getString(R.string.conference_default_title)
@@ -381,7 +390,8 @@ class ConferenceViewModel : ViewModel() {
 
         isConferenceLocallyPaused.value = !conference.isIn
         isMeAdmin.value = conference.me.isAdmin
-        isVideoConference.value = conference.currentParams.isVideoEnabled && !corePreferences.disableVideo
+        isVideoConference.value =
+            conference.currentParams.isVideoEnabled && !corePreferences.disableVideo
         subject.value = LinphoneUtils.getConferenceSubject(conference)
 
         updateConferenceLayout(conference)
@@ -664,11 +674,12 @@ class ConferenceViewModel : ViewModel() {
         }
         if (meDeviceData != null) {
             val index = sortedList.indexOf(meDeviceData)
-            val expectedIndex = if (conferenceDisplayMode.value == ConferenceDisplayMode.ACTIVE_SPEAKER) {
-                0
-            } else {
-                sortedList.size - 1
-            }
+            val expectedIndex =
+                if (conferenceDisplayMode.value == ConferenceDisplayMode.ACTIVE_SPEAKER) {
+                    0
+                } else {
+                    sortedList.size - 1
+                }
             if (index != expectedIndex) {
                 Log.i(
                     "[Conference] Me device data is at index $index, moving it to index $expectedIndex"

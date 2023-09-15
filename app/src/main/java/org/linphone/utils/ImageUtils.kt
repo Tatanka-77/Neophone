@@ -35,7 +35,8 @@ import org.linphone.core.tools.Log
 
 class ImageUtils {
     companion object {
-        private const val BASE64_REGEX = "^data:image\\/(gif|png|jpeg|bmp|webp|svg\\+xml)(;charset=utf-8)?;base64,[A-Za-z0-9+\\/]+={0,2}\$"
+        private const val BASE64_REGEX =
+            "^data:image\\/(gif|png|jpeg|bmp|webp|svg\\+xml)(;charset=utf-8)?;base64,[A-Za-z0-9+\\/]+={0,2}\$"
 
         fun isBase64(source: String): Boolean {
             return source.matches(Regex(BASE64_REGEX))

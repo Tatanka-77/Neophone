@@ -6,7 +6,8 @@
     <data>
 
         <import type="android.view.View" />
-        <import type="org.linphone.core.ConsolidatedPresence"/>
+
+        <import type="org.linphone.core.ConsolidatedPresence" />
 
         <variable
             name="clickListener"
@@ -91,8 +92,8 @@
                 android:layout_height="@dimen/contact_avatar_size"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="10dp"
-                android:contentDescription="@null"
                 android:background="@drawable/generated_avatar_bg"
+                android:contentDescription="@null"
                 android:src="@drawable/voip_single_contact_avatar" />
 
             <ImageView
@@ -103,8 +104,8 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/led_background"
                 android:padding="@dimen/contact_presence_badge_padding"
-                app:presenceIcon="@{viewModel.presenceStatus}"
                 android:visibility="@{viewModel.presenceStatus == ConsolidatedPresence.Offline ? View.GONE : View.VISIBLE, default=gone}"
+                app:presenceIcon="@{viewModel.presenceStatus}"
                 tools:ignore="ContentDescription" />
 
             <ImageView

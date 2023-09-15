@@ -55,11 +55,13 @@ class TelecomConnectionService : ConnectionService() {
                         }
                     }
                 }
+
                 Call.State.Error -> onCallError(call)
                 Call.State.End, Call.State.Released -> onCallEnded(call)
                 Call.State.Paused, Call.State.Pausing, Call.State.PausedByRemote -> onCallPaused(
                     call
                 )
+
                 Call.State.Connected, Call.State.StreamsRunning -> onCallConnected(call)
                 else -> {}
             }
@@ -144,6 +146,7 @@ class TelecomConnectionService : ConnectionService() {
                     Call.State.End, Call.State.Error, Call.State.Released -> connection.setDisconnected(
                         DisconnectCause(DisconnectCause.ERROR)
                     )
+
                     else -> connection.setActive()
                 }
             } else {
@@ -209,6 +212,7 @@ class TelecomConnectionService : ConnectionService() {
                     Call.State.End, Call.State.Error, Call.State.Released -> connection.setDisconnected(
                         DisconnectCause(DisconnectCause.ERROR)
                     )
+
                     else -> connection.setActive()
                 }
             } else {

@@ -114,7 +114,8 @@ class ContactsSettingsFragment : GenericSettingFragment<SettingsContactsFragment
     ) {
         when (requestCode) {
             0 -> {
-                val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val granted =
+                    grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 if (granted) {
                     Log.i("[Contacts Settings] READ_CONTACTS permission granted")
                     viewModel.readContactsPermissionGranted.value = true
@@ -123,8 +124,10 @@ class ContactsSettingsFragment : GenericSettingFragment<SettingsContactsFragment
                     Log.w("[Contacts Settings] READ_CONTACTS permission denied")
                 }
             }
+
             1 -> {
-                val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val granted =
+                    grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 if (granted) {
                     Log.i("[Contacts Settings] WRITE_CONTACTS permission granted")
                     corePreferences.storePresenceInNativeContact = true

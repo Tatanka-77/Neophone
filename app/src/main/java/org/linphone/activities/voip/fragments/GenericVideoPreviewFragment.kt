@@ -44,6 +44,7 @@ abstract class GenericVideoPreviewFragment<T : ViewDataBinding> : GenericFragmen
                 switchY = (switchCameraImageView?.y ?: 0f) - event.rawY
                 true
             }
+
             MotionEvent.ACTION_MOVE -> {
                 view.animate()
                     .x(event.rawX + previewX)
@@ -59,6 +60,7 @@ abstract class GenericVideoPreviewFragment<T : ViewDataBinding> : GenericFragmen
                 }
                 true
             }
+
             else -> {
                 view.performClick()
                 false

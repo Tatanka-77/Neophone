@@ -114,7 +114,10 @@ class AudioRouteUtils {
             }
         }
 
-        private fun changeCaptureDeviceToMatchAudioRoute(call: Call?, types: List<AudioDevice.Type>) {
+        private fun changeCaptureDeviceToMatchAudioRoute(
+            call: Call?,
+            types: List<AudioDevice.Type>
+        ) {
             when (types.first()) {
                 AudioDevice.Type.Bluetooth -> {
                     if (isBluetoothAudioRecorderAvailable()) {
@@ -124,6 +127,7 @@ class AudioRouteUtils {
                         applyAudioRouteChange(call, arrayListOf(AudioDevice.Type.Bluetooth), false)
                     }
                 }
+
                 AudioDevice.Type.Headset, AudioDevice.Type.Headphones -> {
                     if (isHeadsetAudioRecorderAvailable()) {
                         Log.i(
@@ -136,12 +140,14 @@ class AudioRouteUtils {
                         )
                     }
                 }
+
                 AudioDevice.Type.Earpiece, AudioDevice.Type.Speaker -> {
                     Log.i(
                         "[Audio Route Helper] Audio route requested to Earpiece or Speaker, setting input to Microphone"
                     )
                     applyAudioRouteChange(call, (arrayListOf(AudioDevice.Type.Microphone)), false)
                 }
+
                 else -> {
                     Log.w("[Audio Route Helper] Unexpected audio device type: ${types.first()}")
                 }
@@ -153,7 +159,8 @@ class AudioRouteUtils {
             types: List<AudioDevice.Type>,
             skipTelecom: Boolean = false
         ) {
-            val currentCall = call ?: coreContext.core.currentCall ?: coreContext.core.calls.firstOrNull()
+            val currentCall =
+                call ?: coreContext.core.currentCall ?: coreContext.core.calls.firstOrNull()
             if (currentCall != null && !skipTelecom && TelecomHelper.exists()) {
                 Log.i(
                     "[Audio Route Helper] Call provided & Telecom Helper exists, trying to dispatch audio route change through Telecom API"
@@ -326,15 +333,19 @@ class AudioRouteUtils {
                         AudioDevice.Type.Headphones, AudioDevice.Type.Headset, AudioDevice.Type.HearingAid -> {
                             headphonesCard = device.id
                         }
+
                         AudioDevice.Type.Bluetooth -> {
                             bluetoothCard = device.id
                         }
+
                         AudioDevice.Type.Speaker -> {
                             speakerCard = device.id
                         }
+
                         AudioDevice.Type.Earpiece -> {
                             earpieceCard = device.id
                         }
+
                         else -> {}
                     }
                 }
@@ -357,12 +368,15 @@ class AudioRouteUtils {
                         AudioDevice.Type.Bluetooth -> {
                             bluetoothAudioDevice = device
                         }
+
                         AudioDevice.Type.Headset, AudioDevice.Type.HearingAid, AudioDevice.Type.Headphones -> {
                             headsetAudioDevice = device
                         }
+
                         AudioDevice.Type.Microphone -> {
                             builtinMicrophone = device
                         }
+
                         else -> {}
                     }
                 }

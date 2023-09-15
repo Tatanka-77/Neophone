@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="org.linphone.activities.assistant.fragments.WelcomeFragment"
-        tools:layout="@layout/assistant_welcome_fragment"
-        android:label="WelcomeFragment" >
+        android:label="WelcomeFragment"
+        tools:layout="@layout/assistant_welcome_fragment">
         <action
             android:id="@+id/action_welcomeFragment_to_genericAccountWarningFragment"
             app:destination="@id/genericAccountLoginFragment" />
@@ -19,8 +19,8 @@
     <fragment
         android:id="@+id/genericAccountLoginFragment"
         android:name="org.linphone.activities.assistant.fragments.GenericAccountLoginFragment"
-        tools:layout="@layout/assistant_generic_account_login_fragment"
-        android:label="GenericAccountLoginFragment" >
+        android:label="GenericAccountLoginFragment"
+        tools:layout="@layout/assistant_generic_account_login_fragment">
         <action
             android:id="@+id/action_genericAccountLoginFragment_to_echoCancellerCalibrationFragment"
             app:destination="@id/echoCancellerCalibrationFragment" />
@@ -28,11 +28,11 @@
     <fragment
         android:id="@+id/echoCancellerCalibrationFragment"
         android:name="org.linphone.activities.assistant.fragments.EchoCancellerCalibrationFragment"
-        tools:layout="@layout/assistant_echo_canceller_calibration_fragment"
-        android:label="EchoCancellerCalibrationFragment" />
+        android:label="EchoCancellerCalibrationFragment"
+        tools:layout="@layout/assistant_echo_canceller_calibration_fragment" />
     <fragment
         android:id="@+id/noPushWarningFragment"
         android:name="org.linphone.activities.assistant.fragments.NoPushWarningFragment"
         android:label="NoPushWarningFragment"
-        tools:layout="@layout/assistant_no_push_warning_fragment"/>
+        tools:layout="@layout/assistant_no_push_warning_fragment" />
 </navigation>

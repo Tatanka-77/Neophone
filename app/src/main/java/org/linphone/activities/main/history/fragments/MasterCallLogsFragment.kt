@@ -81,7 +81,8 @@ class MasterCallLogsFragment : MasterFragment<HistoryMasterFragmentBinding, Call
         useMaterialSharedAxisXForwardAnimation = false
 
         if (corePreferences.enableAnimations) {
-            val portraitOrientation = resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE
+            val portraitOrientation =
+                resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE
             val axis = if (portraitOrientation) MaterialSharedAxis.X else MaterialSharedAxis.Y
             enterTransition = MaterialSharedAxis(axis, false)
             reenterTransition = MaterialSharedAxis(axis, false)
@@ -250,6 +251,7 @@ class MasterCallLogsFragment : MasterFragment<HistoryMasterFragmentBinding, Call
                             )
                         }
                     }
+
                     coreContext.core.callsNb > 0 -> {
                         val cleanAddress = LinphoneUtils.getCleanedAddress(callLog.remoteAddress)
                         Log.i(
@@ -261,9 +263,13 @@ class MasterCallLogsFragment : MasterFragment<HistoryMasterFragmentBinding, Call
                         val args = Bundle()
                         args.putString("URI", cleanAddress.asStringUriOnly())
                         args.putBoolean("Transfer", sharedViewModel.pendingCallTransfer)
-                        args.putBoolean("SkipAutoCallStart", true) // If auto start call setting is enabled, ignore it
+                        args.putBoolean(
+                            "SkipAutoCallStart",
+                            true
+                        ) // If auto start call setting is enabled, ignore it
                         navigateToDialer(args)
                     }
+
                     else -> {
                         val cleanAddress = LinphoneUtils.getCleanedAddress(callLog.remoteAddress)
                         val localAddress = callLogGroup.lastCallLog.localAddress

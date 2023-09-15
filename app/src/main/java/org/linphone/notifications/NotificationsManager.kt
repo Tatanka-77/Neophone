@@ -126,12 +126,14 @@ class NotificationsManager(private val context: Context) {
                         Log.w("[Notifications Manager] No service found, waiting for it to start")
                     }
                 }
+
                 Call.State.End, Call.State.Error -> dismissCallNotification(call)
                 Call.State.Released -> {
                     if (LinphoneUtils.isCallLogMissed(call.callLog)) {
                         displayMissedCallNotification(call.remoteAddress)
                     }
                 }
+
                 else -> displayCallNotification(call)
             }
         }
@@ -326,7 +328,8 @@ class NotificationsManager(private val context: Context) {
     init {
         Compatibility.createNotificationChannels(context, notificationManager)
 
-        val manager = context.getSystemService(NotificationManager::class.java) as NotificationManager
+        val manager =
+            context.getSystemService(NotificationManager::class.java) as NotificationManager
         for (notification in manager.activeNotifications) {
             if (notification.tag.isNullOrEmpty()) { // We use null tag for call notifications otherwise it will create duplicates when used with Service.startForeground()...
                 Log.w(
@@ -408,7 +411,11 @@ class NotificationsManager(private val context: Context) {
 
     fun startForeground() {
         val serviceChannel = context.getString(R.string.notification_channel_service_id)
-        if (Compatibility.getChannelImportance(notificationManager, serviceChannel) == NotificationManagerCompat.IMPORTANCE_NONE) {
+        if (Compatibility.getChannelImportance(
+                notificationManager,
+                serviceChannel
+            ) == NotificationManagerCompat.IMPORTANCE_NONE
+        ) {
             Log.w("[Notifications Manager] Service channel is disabled!")
             return
         }
@@ -446,6 +453,7 @@ class NotificationsManager(private val context: Context) {
                     )
                 }
             }
+
             coreContext.core.callsNb > 0 -> {
                 // When this method will be called, we won't have any notification yet
                 val call = coreContext.core.currentCall ?: coreContext.core.calls[0]
@@ -456,6 +464,7 @@ class NotificationsManager(private val context: Context) {
                         )
                         displayIncomingCallNotification(call, true)
                     }
+
                     else -> {
                         Log.i(
                             "[Notifications Manager] Creating call notification to be used as foreground service"
@@ -563,7 +572,11 @@ class NotificationsManager(private val context: Context) {
 
     private fun createServiceNotification(useAutoStartDescription: Boolean = false): Notification? {
         val serviceChannel = context.getString(R.string.notification_channel_service_id)
-        if (Compatibility.getChannelImportance(notificationManager, serviceChannel) == NotificationManagerCompat.IMPORTANCE_NONE) {
+        if (Compatibility.getChannelImportance(
+                notificationManager,
+                serviceChannel
+            ) == NotificationManagerCompat.IMPORTANCE_NONE
+        ) {
             Log.w("[Notifications Manager] Service channel is disabled!")
             return null
         }
@@ -762,10 +775,12 @@ class NotificationsManager(private val context: Context) {
                 )
                 context.getString(R.string.notification_channel_incoming_call_id)
             }
+
             NotificationManagerCompat.IMPORTANCE_LOW -> {
                 // Expected, nothing to do
                 serviceChannel
             }
+
             else -> {
                 // If user disables & enabled back service notifications channel, importance won't be low anymore but default!
                 Log.w(

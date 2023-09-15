@@ -130,10 +130,12 @@ open class CallData(val call: Call) : GenericContactData(call.remoteAddress) {
         displayableAddress.value = LinphoneUtils.getDisplayableAddress(call.remoteAddress)
 
         isConferenceCall.addSource(remoteConferenceSubject) {
-            isConferenceCall.value = remoteConferenceSubject.value.orEmpty().isNotEmpty() || conferenceParticipants.value.orEmpty().isNotEmpty()
+            isConferenceCall.value = remoteConferenceSubject.value.orEmpty()
+                .isNotEmpty() || conferenceParticipants.value.orEmpty().isNotEmpty()
         }
         isConferenceCall.addSource(conferenceParticipants) {
-            isConferenceCall.value = remoteConferenceSubject.value.orEmpty().isNotEmpty() || conferenceParticipants.value.orEmpty().isNotEmpty()
+            isConferenceCall.value = remoteConferenceSubject.value.orEmpty()
+                .isNotEmpty() || conferenceParticipants.value.orEmpty().isNotEmpty()
         }
 
         update()
@@ -208,6 +210,7 @@ open class CallData(val call: Call) : GenericContactData(call.remoteAddress) {
                     true
                 }
             }
+
             else -> false
         }
     }

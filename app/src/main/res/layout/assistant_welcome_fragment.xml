@@ -3,19 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="createAccountClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
+
         <variable
             name="accountLoginClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
+
         <variable
             name="genericAccountLoginClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
+
         <variable
             name="remoteProvisioningClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
+
         <variable
             name="viewModel"
             type="org.linphone.activities.assistant.viewmodels.WelcomeViewModel" />
@@ -48,16 +54,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/assistant_welcome_title"
                     android:paddingTop="10dp"
+                    android:text="@string/assistant_welcome_title"
                     android:textAllCaps="true" />
 
                 <TextView
                     style="@style/standard_small_text_font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_gravity="top"
+                    android:gravity="center"
                     android:paddingTop="10dp"
                     android:text="@string/assistant_welcome_desc" />
 
@@ -69,17 +75,17 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="fill"
                         android:layout_columnSpan="1"
-                        android:orientation="horizontal"
+                        android:layout_gravity="fill"
+                        android:layout_margin="10dp"
                         android:gravity="center_vertical"
-                        android:layout_margin="10dp">
+                        android:orientation="horizontal">
 
                         <CheckBox
-                            android:enabled="@{!viewModel.termsAndPrivacyAccepted}"
-                            android:checked="@={viewModel.termsAndPrivacyAccepted}"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.termsAndPrivacyAccepted}"
+                            android:enabled="@{!viewModel.termsAndPrivacyAccepted}" />
 
                         <TextView
                             android:id="@+id/terms_and_privacy"
@@ -90,19 +96,19 @@
 
                     <TextView
                         android:id="@+id/generic_connection"
-                        android:enabled="@{viewModel.termsAndPrivacyAccepted}"
-                        android:visibility="@{viewModel.showGenericLogin ? View.VISIBLE : View.GONE}"
-                        android:onClick="@{genericAccountLoginClickListener}"
                         style="@style/button_font"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:layout_margin="20dp"
                         android:layout_width="wrap_content"
-                        android:layout_gravity="fill"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:layout_margin="20dp"
                         android:background="@drawable/assistant_button"
+                        android:enabled="@{viewModel.termsAndPrivacyAccepted}"
+                        android:gravity="center"
+                        android:onClick="@{genericAccountLoginClickListener}"
+                        android:padding="10dp"
+                        android:text="@string/assistant_login_generic"
                         android:textColor="@drawable/assistant_button_text_color"
-                        android:text="@string/assistant_login_generic" />
+                        android:visibility="@{viewModel.showGenericLogin ? View.VISIBLE : View.GONE}" />
 
                 </GridLayout>
 

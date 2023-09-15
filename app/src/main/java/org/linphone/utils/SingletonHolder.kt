@@ -23,7 +23,8 @@ package org.linphone.utils
  * Helper class to create singletons like CoreContext.
  */
 open class SingletonHolder<out T : Any, in A>(val creator: (A) -> T) {
-    @Volatile private var instance: T? = null
+    @Volatile
+    private var instance: T? = null
 
     fun exists(): Boolean {
         return instance != null

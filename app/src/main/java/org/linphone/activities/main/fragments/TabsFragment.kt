@@ -35,7 +35,9 @@ import org.linphone.activities.navigateToDialer
 import org.linphone.databinding.TabsFragmentBinding
 import org.linphone.utils.Event
 
-class TabsFragment : GenericFragment<TabsFragmentBinding>(), NavController.OnDestinationChangedListener {
+class TabsFragment :
+    GenericFragment<TabsFragmentBinding>(),
+    NavController.OnDestinationChangedListener {
     private lateinit var viewModel: TabsViewModel
 
     override fun getLayoutId(): Int = R.layout.tabs_fragment
@@ -53,21 +55,28 @@ class TabsFragment : GenericFragment<TabsFragmentBinding>(), NavController.OnDes
 
         binding.setHistoryClickListener {
             when (findNavController().currentDestination?.id) {
-                R.id.masterContactsFragment -> sharedViewModel.updateContactsAnimationsBasedOnDestination.value = Event(
-                    R.id.masterCallLogsFragment
-                )
-                R.id.dialerFragment -> sharedViewModel.updateDialerAnimationsBasedOnDestination.value = Event(
-                    R.id.masterCallLogsFragment
-                )
+                R.id.masterContactsFragment ->
+                    sharedViewModel.updateContactsAnimationsBasedOnDestination.value =
+                        Event(
+                            R.id.masterCallLogsFragment
+                        )
+
+                R.id.dialerFragment ->
+                    sharedViewModel.updateDialerAnimationsBasedOnDestination.value =
+                        Event(
+                            R.id.masterCallLogsFragment
+                        )
             }
             navigateToCallHistory()
         }
 
         binding.setContactsClickListener {
             when (findNavController().currentDestination?.id) {
-                R.id.dialerFragment -> sharedViewModel.updateDialerAnimationsBasedOnDestination.value = Event(
-                    R.id.masterContactsFragment
-                )
+                R.id.dialerFragment ->
+                    sharedViewModel.updateDialerAnimationsBasedOnDestination.value =
+                        Event(
+                            R.id.masterContactsFragment
+                        )
             }
             sharedViewModel.updateContactsAnimationsBasedOnDestination.value = Event(
                 findNavController().currentDestination?.id ?: -1
@@ -77,9 +86,11 @@ class TabsFragment : GenericFragment<TabsFragmentBinding>(), NavController.OnDes
 
         binding.setDialerClickListener {
             when (findNavController().currentDestination?.id) {
-                R.id.masterContactsFragment -> sharedViewModel.updateContactsAnimationsBasedOnDestination.value = Event(
-                    R.id.dialerFragment
-                )
+                R.id.masterContactsFragment ->
+                    sharedViewModel.updateContactsAnimationsBasedOnDestination.value =
+                        Event(
+                            R.id.dialerFragment
+                        )
             }
             sharedViewModel.updateDialerAnimationsBasedOnDestination.value = Event(
                 findNavController().currentDestination?.id ?: -1
@@ -108,6 +119,7 @@ class TabsFragment : GenericFragment<TabsFragmentBinding>(), NavController.OnDes
                 R.id.masterCallLogsFragment -> binding.motionLayout.transitionToState(
                     R.id.call_history
                 )
+
                 R.id.masterContactsFragment -> binding.motionLayout.transitionToState(R.id.contacts)
                 R.id.dialerFragment -> binding.motionLayout.transitionToState(R.id.dialer)
                 R.id.masterChatRoomsFragment -> binding.motionLayout.transitionToState(
@@ -120,10 +132,12 @@ class TabsFragment : GenericFragment<TabsFragmentBinding>(), NavController.OnDes
                     R.id.call_history,
                     R.id.call_history
                 )
+
                 R.id.masterContactsFragment -> binding.motionLayout.setTransition(
                     R.id.contacts,
                     R.id.contacts
                 )
+
                 R.id.dialerFragment -> binding.motionLayout.setTransition(R.id.dialer, R.id.dialer)
                 R.id.masterChatRoomsFragment -> binding.motionLayout.setTransition(
                     R.id.chat_rooms,

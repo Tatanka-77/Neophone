@@ -104,6 +104,7 @@ class StatusFragment : GenericFragment<VoipStatusFragmentBinding>() {
                 toRead = token.substring(0, 2)
                 toListen = token.substring(2)
             }
+
             else -> {
                 toRead = token.substring(2)
                 toListen = token.substring(0, 2)

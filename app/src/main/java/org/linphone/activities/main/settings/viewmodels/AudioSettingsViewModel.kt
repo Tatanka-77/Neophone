@@ -169,7 +169,8 @@ class AudioSettingsViewModel : GenericSettingsViewModel() {
             prefs.getString(R.string.audio_settings_echo_canceller_calibration_summary)
         }
         echoTesterStatus.value = prefs.getString(R.string.audio_settings_echo_tester_summary)
-        showEchoTester.value = prefs.debugLogs // Don't show echo tester unless debug mode is enabled, may confuse user over what it should be used for
+        showEchoTester.value =
+            prefs.debugLogs // Don't show echo tester unless debug mode is enabled, may confuse user over what it should be used for
 
         preferBluetoothDevices.value = prefs.routeAudioToBluetoothIfAvailable
         initInputAudioDevicesList()
@@ -201,17 +202,20 @@ class AudioSettingsViewModel : GenericSettingsViewModel() {
                 )
                 softwareEchoCanceller.value = false
             }
+
             EcCalibratorStatus.Done -> {
                 softwareEchoCalibration.value = prefs.getString(
                     R.string.audio_settings_echo_cancellation_calibration_value
                 ).format(delay)
                 softwareEchoCanceller.value = true
             }
+
             EcCalibratorStatus.Failed -> {
                 softwareEchoCalibration.value = prefs.getString(
                     R.string.audio_settings_echo_cancellation_calibration_failed
                 )
             }
+
             EcCalibratorStatus.InProgress -> { // We should never get here but still
                 softwareEchoCalibration.value = prefs.getString(
                     R.string.audio_settings_echo_cancellation_calibration_started

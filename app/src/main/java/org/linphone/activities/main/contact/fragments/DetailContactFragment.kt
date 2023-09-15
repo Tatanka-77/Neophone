@@ -53,7 +53,8 @@ class DetailContactFragment : GenericFragment<ContactDetailFragmentBinding>() {
 
         binding.sharedMainViewModel = sharedViewModel
 
-        useMaterialSharedAxisXForwardAnimation = sharedViewModel.isSlidingPaneSlideable.value == false
+        useMaterialSharedAxisXForwardAnimation =
+            sharedViewModel.isSlidingPaneSlideable.value == false
 
         val id = arguments?.getString("id")
         arguments?.clear()

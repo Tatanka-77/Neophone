@@ -157,7 +157,10 @@ class ShortcutsHelper(val context: Context) {
             Log.i("[Shortcut Helper] Created $count launcher shortcuts")
         }
 
-        private fun createChatRoomShortcut(context: Context, chatRoom: ChatRoom): ShortcutInfoCompat? {
+        private fun createChatRoomShortcut(
+            context: Context,
+            chatRoom: ChatRoom
+        ): ShortcutInfoCompat? {
             val localAddress = chatRoom.localAddress.asStringUriOnly()
             val peerAddress = chatRoom.peerAddress.asStringUriOnly()
             val id = LinphoneUtils.getChatRoomId(chatRoom.localAddress, chatRoom.peerAddress)

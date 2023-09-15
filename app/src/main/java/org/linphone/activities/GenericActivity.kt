@@ -47,7 +47,7 @@ abstract class GenericActivity : AppCompatActivity() {
     val isDestructionPending: Boolean
         get() = _isDestructionPending
 
-    open fun onLayoutChanges(foldingFeature: FoldingFeature?) { }
+    open fun onLayoutChanges(foldingFeature: FoldingFeature?) {}
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +83,7 @@ abstract class GenericActivity : AppCompatActivity() {
                     _isDestructionPending = true
                 }
             }
+
             Configuration.UI_MODE_NIGHT_YES -> {
                 if (darkModeEnabled == 0) {
                     // Force light mode

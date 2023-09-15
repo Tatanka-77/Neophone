@@ -61,7 +61,8 @@ class DetailCallLogFragment : GenericFragment<HistoryDetailFragmentBinding>() {
             viewModel.addRelatedCallLogs(callLogGroup.callLogs)
         }
 
-        useMaterialSharedAxisXForwardAnimation = sharedViewModel.isSlidingPaneSlideable.value == false
+        useMaterialSharedAxisXForwardAnimation =
+            sharedViewModel.isSlidingPaneSlideable.value == false
 
         binding.setNewContactClickListener {
             val copy = viewModel.callLog.remoteAddress.clone()

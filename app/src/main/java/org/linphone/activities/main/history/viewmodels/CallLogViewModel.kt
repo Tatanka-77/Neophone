@@ -40,9 +40,10 @@ import org.linphone.utils.Event
 import org.linphone.utils.LinphoneUtils
 import org.linphone.utils.TimestampUtils
 
-class CallLogViewModel(val callLog: CallLog, private val isRelated: Boolean = false) : GenericContactViewModel(
-    callLog.remoteAddress
-) {
+class CallLogViewModel(val callLog: CallLog, private val isRelated: Boolean = false) :
+    GenericContactViewModel(
+        callLog.remoteAddress
+    ) {
     val peerSipUri: String by lazy {
         LinphoneUtils.getDisplayableAddress(callLog.remoteAddress)
     }

@@ -70,7 +70,8 @@ fun View.hideKeyboard() {
         val imm =
             context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
-    } catch (_: Exception) {}
+    } catch (_: Exception) {
+    }
 }
 
 fun View.setKeyboardInsetListener(lambda: (visible: Boolean) -> Unit) {
@@ -212,7 +213,8 @@ fun editTextImeDone(view: EditText, lambda: () -> Unit) {
 
             view.clearFocus()
 
-            val imm = view.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm =
+                view.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
 
             return@setOnEditorActionListener true
@@ -286,7 +288,8 @@ private fun <T> setEntries(
 ) {
     viewGroup.removeAllViews()
     if (entries != null) {
-        val inflater = viewGroup.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater =
+            viewGroup.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         for (entry in entries) {
             val binding = DataBindingUtil.inflate<ViewDataBinding>(
                 inflater,
@@ -639,6 +642,7 @@ fun addUsernameEditTextValidation(editText: EditText, enabled: Boolean) {
                         editText.context.getString(
                             R.string.assistant_error_username_invalid_characters
                         )
+
                 (s?.length ?: 0) > usernameMaxLength -> {
                     editText.error =
                         editText.context.getString(R.string.assistant_error_username_too_long)
@@ -878,9 +882,11 @@ fun ImageView.setPresenceIcon(presence: ConsolidatedPresence?) {
         ConsolidatedPresence.Online -> AppUtils.getString(
             R.string.content_description_presence_online
         )
+
         ConsolidatedPresence.DoNotDisturb -> AppUtils.getString(
             R.string.content_description_presence_do_not_disturb
         )
+
         else -> AppUtils.getString(R.string.content_description_presence_offline)
     }
     setContentDescription(contentDescription)

@@ -73,14 +73,17 @@ class CallActivity : ProximitySensorActivity() {
         val navController = binding.navHostFragment.findNavController()
         val navControllerStoreOwner = navController.getViewModelStoreOwner(R.id.call_nav_graph)
 
-        controlsViewModel = ViewModelProvider(navControllerStoreOwner)[ControlsViewModel::class.java]
+        controlsViewModel =
+            ViewModelProvider(navControllerStoreOwner)[ControlsViewModel::class.java]
         binding.controlsViewModel = controlsViewModel
 
         callsViewModel = ViewModelProvider(navControllerStoreOwner)[CallsViewModel::class.java]
 
-        conferenceViewModel = ViewModelProvider(navControllerStoreOwner)[ConferenceViewModel::class.java]
+        conferenceViewModel =
+            ViewModelProvider(navControllerStoreOwner)[ConferenceViewModel::class.java]
 
-        statsViewModel = ViewModelProvider(navControllerStoreOwner)[StatisticsListViewModel::class.java]
+        statsViewModel =
+            ViewModelProvider(navControllerStoreOwner)[StatisticsListViewModel::class.java]
 
         val isInPipMode = Compatibility.isInPictureInPictureMode(this)
         Log.i("[Call Activity] onPostCreate: is in PiP mode? $isInPipMode")
@@ -203,12 +206,14 @@ class CallActivity : ProximitySensorActivity() {
             Call.State.OutgoingInit, Call.State.OutgoingEarlyMedia, Call.State.OutgoingProgress, Call.State.OutgoingRinging -> {
                 navigateToOutgoingCall()
             }
+
             Call.State.IncomingReceived, Call.State.IncomingEarlyMedia -> {
                 val earlyMediaVideoEnabled = corePreferences.acceptEarlyMedia &&
                     currentCall.state == Call.State.IncomingEarlyMedia &&
                     currentCall.currentParams.isVideoEnabled
                 navigateToIncomingCall(earlyMediaVideoEnabled)
             }
+
             else -> {}
         }
     }
@@ -246,7 +251,9 @@ class CallActivity : ProximitySensorActivity() {
             permissionsRequiredList.add(Manifest.permission.CAMERA)
         }
 
-        if (Version.sdkAboveOrEqual(Version.API31_ANDROID_12) && !PermissionHelper.get().hasBluetoothConnectPermission()) {
+        if (Version.sdkAboveOrEqual(Version.API31_ANDROID_12) && !PermissionHelper.get()
+            .hasBluetoothConnectPermission()
+        ) {
             Log.i("[Call Activity] Asking for BLUETOOTH_CONNECT permission")
             permissionsRequiredList.add(Compatibility.BLUETOOTH_CONNECT)
         }
@@ -270,14 +277,17 @@ class CallActivity : ProximitySensorActivity() {
                         Log.i("[Call Activity] RECORD_AUDIO permission has been granted")
                         callsViewModel.updateMicState()
                     }
+
                     Manifest.permission.CAMERA -> if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                         Log.i("[Call Activity] CAMERA permission has been granted")
                         coreContext.core.reloadVideoDevices()
                         controlsViewModel.toggleVideo()
                     }
+
                     Compatibility.BLUETOOTH_CONNECT -> if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                         Log.i("[Call Activity] BLUETOOTH_CONNECT permission has been granted")
                     }
+
                     Manifest.permission.WRITE_EXTERNAL_STORAGE -> if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                         Log.i(
                             "[Call Activity] WRITE_EXTERNAL_STORAGE permission has been granted, taking snapshot"

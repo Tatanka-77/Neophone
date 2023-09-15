@@ -188,7 +188,10 @@ class AppUtils {
             }
         }
 
-        fun getDividerDecoration(context: Context, layoutManager: LinearLayoutManager): DividerItemDecoration {
+        fun getDividerDecoration(
+            context: Context,
+            layoutManager: LinearLayoutManager
+        ): DividerItemDecoration {
             val dividerItemDecoration = DividerItemDecoration(context, layoutManager.orientation)
             val divider = ResourcesCompat.getDrawable(context.resources, R.drawable.divider, null)
             if (divider != null) dividerItemDecoration.setDrawable(divider)
@@ -233,9 +236,11 @@ class AppUtils {
                 AudioManager.AUDIOFOCUS_REQUEST_GRANTED -> {
                     Log.i("[Audio Focus] Voice recording/playback audio focus request granted")
                 }
+
                 AudioManager.AUDIOFOCUS_REQUEST_FAILED -> {
                     Log.w("[Audio Focus] Voice recording/playback audio focus request failed")
                 }
+
                 AudioManager.AUDIOFOCUS_REQUEST_DELAYED -> {
                     Log.w("[Audio Focus] Voice recording/playback audio focus request delayed")
                 }

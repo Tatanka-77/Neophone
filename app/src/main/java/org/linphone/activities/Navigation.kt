@@ -642,6 +642,7 @@ internal fun WelcomeFragment.navigateToGenericLoginWarning() {
         )
     }
 }
+
 internal fun GenericAccountLoginFragment.navigateToEchoCancellerCalibration() {
     if (findNavController().currentDestination?.id == R.id.genericAccountLoginFragment) {
         findNavController().navigate(

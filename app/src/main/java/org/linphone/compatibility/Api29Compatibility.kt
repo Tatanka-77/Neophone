@@ -181,6 +181,7 @@ class Api29Compatibility {
                         MediaStore.Images.Media.IS_PENDING
                     )
                 }
+
                 isVideo -> {
                     val values = ContentValues().apply {
                         put(MediaStore.Video.Media.TITLE, fileName)
@@ -200,6 +201,7 @@ class Api29Compatibility {
                         MediaStore.Video.Media.IS_PENDING
                     )
                 }
+
                 isAudio -> {
                     val values = ContentValues().apply {
                         put(MediaStore.Audio.Media.TITLE, fileName)
@@ -219,6 +221,7 @@ class Api29Compatibility {
                         MediaStore.Audio.Media.IS_PENDING
                     )
                 }
+
                 else -> ""
             }
 

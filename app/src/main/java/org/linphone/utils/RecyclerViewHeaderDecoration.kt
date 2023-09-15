@@ -27,7 +27,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewHeaderDecoration(private val context: Context, private val adapter: HeaderAdapter) : RecyclerView.ItemDecoration() {
+class RecyclerViewHeaderDecoration(
+    private val context: Context,
+    private val adapter: HeaderAdapter
+) : RecyclerView.ItemDecoration() {
     private val headers: SparseArray<View> = SparseArray()
 
     override fun getItemOffsets(

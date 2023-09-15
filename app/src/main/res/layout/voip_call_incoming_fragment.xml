@@ -71,20 +71,20 @@
 
         <ImageView
             android:id="@+id/avatar"
+            coilVoipContactAlt="@{callsViewModel.currentCallData}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"
-            android:contentDescription="@null"
             android:background="@drawable/generated_avatar_bg"
-            coilVoipContactAlt="@{callsViewModel.currentCallData}"
+            android:contentDescription="@null"
             app:layout_constraintBottom_toTopOf="@id/caller_name"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_max="@dimen/voip_contact_avatar_max_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/incoming_call_timer"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintWidth_max="@dimen/voip_contact_avatar_max_size"
-            app:layout_constraintDimensionRatio="1:1" />
+            app:layout_constraintWidth_max="@dimen/voip_contact_avatar_max_size" />
 
         <TextView
             android:id="@+id/caller_name"
@@ -120,16 +120,16 @@
             android:id="@+id/conference_avatar"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/icon_video_conf_incoming"
             android:contentDescription="@null"
+            android:src="@drawable/icon_video_conf_incoming"
             app:layout_constraintBottom_toTopOf="@id/participants_count"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_max="120dp"
             app:layout_constraintHeight_min="40dp"
-            app:layout_constraintVertical_weight="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/incoming_conference_subject"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintVertical_weight="0.5" />
 
         <LinearLayout
             android:id="@+id/participants_count"
@@ -144,8 +144,8 @@
             app:layout_constraintBottom_toTopOf="@id/participants_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_weight="0"
-            app:layout_constraintTop_toBottomOf="@id/conference_avatar">
+            app:layout_constraintTop_toBottomOf="@id/conference_avatar"
+            app:layout_constraintVertical_weight="0">
 
             <TextView
                 style="@style/call_header_title"
@@ -168,11 +168,11 @@
             android:layout_marginBottom="10dp"
             android:fadeScrollbars="false"
             android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@id/buttons"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="400dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/participants_count"
-            app:layout_constraintBottom_toTopOf="@id/buttons"
-            app:layout_constraintHeight_max="400dp"
             app:layout_constraintVertical_weight="2">
 
 

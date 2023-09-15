@@ -191,7 +191,8 @@ class DialerFragment : SecureFragment<DialerFragmentBinding>() {
         Log.i("[Dialer] Pending call transfer mode = ${sharedViewModel.pendingCallTransfer}")
         viewModel.transferVisibility.value = sharedViewModel.pendingCallTransfer
 
-        viewModel.autoInitiateVideoCalls.value = coreContext.core.videoActivationPolicy.automaticallyInitiate
+        viewModel.autoInitiateVideoCalls.value =
+            coreContext.core.videoActivationPolicy.automaticallyInitiate
 
         checkForUpdate()
 
@@ -211,7 +212,8 @@ class DialerFragment : SecureFragment<DialerFragmentBinding>() {
         }
 
         viewModel.updateShowVideoPreview()
-        viewModel.autoInitiateVideoCalls.value = coreContext.core.videoActivationPolicy.automaticallyInitiate
+        viewModel.autoInitiateVideoCalls.value =
+            coreContext.core.videoActivationPolicy.automaticallyInitiate
         uploadLogsInitiatedByUs = false
 
         viewModel.enteredUri.value = sharedViewModel.dialerUri
@@ -338,13 +340,16 @@ class DialerFragment : SecureFragment<DialerFragmentBinding>() {
                 getString(R.string.debug_popup_disable_logs) -> {
                     corePreferences.debugLogs = false
                 }
+
                 getString(R.string.debug_popup_enable_logs) -> {
                     corePreferences.debugLogs = true
                 }
+
                 getString(R.string.debug_popup_send_logs) -> {
                     uploadLogsInitiatedByUs = true
                     viewModel.uploadLogs()
                 }
+
                 getString(R.string.debug_popup_show_config_file) -> {
                     navigateToConfigFileViewer()
                 }

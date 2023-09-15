@@ -90,7 +90,12 @@ class CallsViewModel : ViewModel() {
             noMoreCallEvent.value = Event(true)
         }
 
-        override fun onCallStateChanged(core: Core, call: Call, state: Call.State, message: String) {
+        override fun onCallStateChanged(
+            core: Core,
+            call: Call,
+            state: Call.State,
+            message: String
+        ) {
             Log.i("[Calls] Call with ID [${call.callLog.callId}] state changed: $state")
 
             if (state == Call.State.IncomingEarlyMedia || state == Call.State.IncomingReceived || state == Call.State.OutgoingInit) {
@@ -307,7 +312,8 @@ class CallsViewModel : ViewModel() {
     }
 
     fun updateMicState() {
-        isMicrophoneMuted.value = !PermissionHelper.get().hasRecordAudioPermission() || currentCallData.value?.call?.microphoneMuted == true
+        isMicrophoneMuted.value = !PermissionHelper.get()
+            .hasRecordAudioPermission() || currentCallData.value?.call?.microphoneMuted == true
         isMuteMicrophoneEnabled.value = currentCallData.value?.call != null
     }
 
@@ -317,7 +323,8 @@ class CallsViewModel : ViewModel() {
 
     private fun updateUnreadChatCount() {
         // For now we don't display in-call chat, so use global unread chat messages count
-        currentCallUnreadChatMessageCount.value = coreContext.core.unreadChatMessageCountFromActiveLocals
+        currentCallUnreadChatMessageCount.value =
+            coreContext.core.unreadChatMessageCountFromActiveLocals
     }
 
     private fun updateInactiveCallsCount() {

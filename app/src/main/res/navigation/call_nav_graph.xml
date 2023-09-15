@@ -8,38 +8,41 @@
     <fragment
         android:id="@+id/singleCallFragment"
         android:name="org.linphone.activities.voip.fragments.SingleCallFragment"
-        tools:layout="@layout/voip_single_call_fragment"
-        android:label="SingleCallFragment" >
+        android:label="SingleCallFragment"
+        tools:layout="@layout/voip_single_call_fragment">
         <action
             android:id="@+id/action_singleCallFragment_to_callsListFragment"
             app:destination="@id/callsListFragment" />
     </fragment>
 
-    <action android:id="@+id/action_global_singleCallFragment"
-        app:destination="@id/singleCallFragment"/>
+    <action
+        android:id="@+id/action_global_singleCallFragment"
+        app:destination="@id/singleCallFragment" />
 
     <fragment
         android:id="@+id/callsListFragment"
         android:name="org.linphone.activities.voip.fragments.CallsListFragment"
-        tools:layout="@layout/voip_calls_list_fragment"
-        android:label="CallsListFragment" />
+        android:label="CallsListFragment"
+        tools:layout="@layout/voip_calls_list_fragment" />
 
     <fragment
         android:id="@+id/outgoingCallFragment"
         android:name="org.linphone.activities.voip.fragments.OutgoingCallFragment"
-        tools:layout="@layout/voip_call_outgoing_fragment"
-        android:label="OutgoingCallFragment" />
+        android:label="OutgoingCallFragment"
+        tools:layout="@layout/voip_call_outgoing_fragment" />
 
-    <action android:id="@+id/action_global_outgoingCallFragment"
+    <action
+        android:id="@+id/action_global_outgoingCallFragment"
         app:destination="@id/outgoingCallFragment" />
 
     <fragment
         android:id="@+id/incomingCallFragment"
         android:name="org.linphone.activities.voip.fragments.IncomingCallFragment"
-        tools:layout="@layout/voip_call_incoming_fragment"
-        android:label="IncomingCallFragment" />
+        android:label="IncomingCallFragment"
+        tools:layout="@layout/voip_call_incoming_fragment" />
 
-    <action android:id="@+id/action_global_incomingCallFragment"
+    <action
+        android:id="@+id/action_global_incomingCallFragment"
         app:destination="@id/incomingCallFragment" />
 
 </navigation>

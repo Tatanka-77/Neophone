@@ -29,7 +29,8 @@ import org.linphone.activities.main.contact.adapters.SyncAccountAdapter
 import org.linphone.core.tools.Log
 import org.linphone.databinding.ContactSyncAccountPickerFragmentBinding
 
-class SyncAccountPickerFragment(private val listener: SyncAccountPickedListener) : DialogFragment() {
+class SyncAccountPickerFragment(private val listener: SyncAccountPickedListener) :
+    DialogFragment() {
     private var _binding: ContactSyncAccountPickerFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: SyncAccountAdapter

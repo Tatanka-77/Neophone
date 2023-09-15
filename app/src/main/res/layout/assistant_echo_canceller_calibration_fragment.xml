@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="org.linphone.activities.assistant.viewmodels.EchoCancellerCalibrationViewModel" />
@@ -24,18 +25,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/top_bar_fragment"
-            android:padding="30dp"
+            android:background="?attr/backgroundColor"
             android:orientation="vertical"
-            android:background="?attr/backgroundColor">
+            android:padding="30dp">
 
             <TextView
-                android:text="@string/assistant_ec_calibration"
                 style="@style/standard_text_font"
-                android:textAllCaps="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:layout_centerHorizontal="true"/>
+                android:text="@string/assistant_ec_calibration"
+                android:textAllCaps="true" />
 
             <ImageView
                 android:layout_width="150dp"
@@ -45,8 +46,8 @@
                 android:src="@drawable/linphone_logo_tinted" />
 
             <ProgressBar
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />
 

@@ -173,7 +173,8 @@ abstract class GenericFragment<T : ViewDataBinding> : Fragment() {
         Log.d(
             "[Generic Fragment] ${getFragmentRealClassName()} isSlidingPaneFlat ? $isSlidingPaneFlat"
         )
-        val isPreviousFragmentEmpty = findNavController().previousBackStackEntry?.destination?.id in emptyFragmentsIds
+        val isPreviousFragmentEmpty =
+            findNavController().previousBackStackEntry?.destination?.id in emptyFragmentsIds
         Log.d(
             "[Generic Fragment] ${getFragmentRealClassName()} isPreviousFragmentEmpty ? $isPreviousFragmentEmpty"
         )

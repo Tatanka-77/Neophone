@@ -209,7 +209,8 @@ class SideMenuFragment : GenericFragment<SideMenuFragmentBinding>() {
 
         dialogViewModel.showOkButton(
             {
-                val defaultAccount = coreContext.core.defaultAccount ?: coreContext.core.accountList.firstOrNull()
+                val defaultAccount =
+                    coreContext.core.defaultAccount ?: coreContext.core.accountList.firstOrNull()
                 if (defaultAccount == null) {
                     Log.e("[Side Menu] No account found, can't check password input!")
                     (requireActivity() as MainActivity).showSnackBar(R.string.error_unexpected)

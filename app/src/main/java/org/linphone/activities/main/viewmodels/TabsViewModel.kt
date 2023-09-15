@@ -121,6 +121,7 @@ class TabsViewModel : ViewModel() {
     }
 
     fun updateUnreadChatCount() {
-        unreadMessagesCount.value = if (corePreferences.disableChat) 0 else coreContext.core.unreadChatMessageCountFromActiveLocals
+        unreadMessagesCount.value =
+            if (corePreferences.disableChat) 0 else coreContext.core.unreadChatMessageCountFromActiveLocals
     }
 }

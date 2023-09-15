@@ -199,11 +199,13 @@ class NativeContactEditor(val friend: Friend) {
                         addPhoneNumber(number)
                     }
                 }
+
                 phoneNumber.toRemove.value == true -> {
                     // Existing number to remove
                     removeCount++
                     removePhoneNumber(phoneNumber.currentValue)
                 }
+
                 phoneNumber.currentValue != phoneNumber.newValue.value -> {
                     // Existing number to update
                     val number = phoneNumber.newValue.value.orEmpty()
@@ -236,11 +238,13 @@ class NativeContactEditor(val friend: Friend) {
                         addSipAddress(address)
                     }
                 }
+
                 sipAddress.toRemove.value == true -> {
                     // Existing address to remove
                     removeCount++
                     removeLinphoneOrSipAddress(sipAddress.currentValue)
                 }
+
                 sipAddress.currentValue != sipAddress.newValue.value -> {
                     // Existing address to update
                     val address = sipAddress.newValue.value.orEmpty()
@@ -476,7 +480,10 @@ class NativeContactEditor(val friend: Friend) {
         addChanges(delete)
     }
 
-    private fun setPresenceLinphoneSipAddressForPhoneNumber(sipAddress: String, phoneNumber: String) {
+    private fun setPresenceLinphoneSipAddressForPhoneNumber(
+        sipAddress: String,
+        phoneNumber: String
+    ) {
         val contentResolver = coreContext.context.contentResolver
         val cursor = contentResolver.query(
             ContactsContract.Data.CONTENT_URI,

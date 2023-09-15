@@ -374,7 +374,8 @@ class MasterContactsFragment : MasterFragment<ContactMasterFragmentBinding, Cont
         grantResults: IntArray
     ) {
         if (requestCode == 0) {
-            val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            val granted =
+                grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
             if (granted) {
                 Log.i("[Contacts] READ_CONTACTS permission granted")
                 coreContext.fetchContacts()
@@ -382,7 +383,8 @@ class MasterContactsFragment : MasterFragment<ContactMasterFragmentBinding, Cont
                 Log.w("[Contacts] READ_CONTACTS permission denied")
             }
         } else if (requestCode == 1) {
-            val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            val granted =
+                grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
             if (granted) {
                 Log.i("[Contacts] WRITE_CONTACTS permission granted")
                 listSelectionViewModel.isEditionEnabled.value = true

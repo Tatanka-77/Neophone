@@ -33,8 +33,10 @@ import org.linphone.utils.LinphoneUtils
 class ContactSelectionData(private val searchResult: SearchResult) : ContactDataInterface {
     override val contact: MutableLiveData<Friend> = MutableLiveData<Friend>()
     override val displayName: MutableLiveData<String> = MutableLiveData<String>()
-    override val securityLevel: MutableLiveData<ChatRoom.SecurityLevel> = MutableLiveData<ChatRoom.SecurityLevel>()
-    override val presenceStatus: MutableLiveData<ConsolidatedPresence> = MutableLiveData<ConsolidatedPresence>()
+    override val securityLevel: MutableLiveData<ChatRoom.SecurityLevel> =
+        MutableLiveData<ChatRoom.SecurityLevel>()
+    override val presenceStatus: MutableLiveData<ConsolidatedPresence> =
+        MutableLiveData<ConsolidatedPresence>()
     override val coroutineScope: CoroutineScope = coreContext.coroutineScope
 
     val isDisabled: MutableLiveData<Boolean> by lazy {

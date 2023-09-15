@@ -110,7 +110,11 @@ class CallLogsListViewModel : ViewModel() {
         updateCallLogs()
     }
 
-    private fun computeCallLogs(callLogs: Array<CallLog>, missed: Boolean, conference: Boolean): ArrayList<GroupedCallLogData> {
+    private fun computeCallLogs(
+        callLogs: Array<CallLog>,
+        missed: Boolean,
+        conference: Boolean
+    ): ArrayList<GroupedCallLogData> {
         var previousCallLogGroup: GroupedCallLogData? = null
         val list = arrayListOf<GroupedCallLogData>()
 
@@ -160,6 +164,7 @@ class CallLogsListViewModel : ViewModel() {
                 missed = false,
                 conference = true
             )
+
             else -> computeCallLogs(allCallLogs, missed = false, conference = false)
         }
     }

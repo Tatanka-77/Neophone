@@ -253,13 +253,16 @@ class CoreContext(
                         Reason.NotAcceptable -> context.getString(
                             R.string.call_error_incompatible_media_params
                         )
+
                         Reason.NotFound -> context.getString(R.string.call_error_user_not_found)
                         Reason.ServerTimeout -> context.getString(
                             R.string.call_error_server_timeout
                         )
+
                         Reason.TemporarilyUnavailable -> context.getString(
                             R.string.call_error_temporarily_unavailable
                         )
+
                         else -> context.getString(R.string.call_error_generic).format(
                             "${call.errorInfo.protocolCode} / ${call.errorInfo.phrase}"
                         )
@@ -765,7 +768,8 @@ class CoreContext(
             // Prevent incoming group call to start in audio only layout
             // Do the same as the conference waiting room
             params.isVideoEnabled = true
-            params.videoDirection = if (core.videoActivationPolicy.automaticallyInitiate) MediaDirection.SendRecv else MediaDirection.RecvOnly
+            params.videoDirection =
+                if (core.videoActivationPolicy.automaticallyInitiate) MediaDirection.SendRecv else MediaDirection.RecvOnly
             Log.i(
                 "[Context] Enabling video on call params to prevent audio-only layout when answering"
             )
@@ -948,6 +952,7 @@ class CoreContext(
                     initX = params.x - event.rawX
                     initY = params.y - event.rawY
                 }
+
                 MotionEvent.ACTION_MOVE -> {
                     val x = (event.rawX + initX).toInt()
                     val y = (event.rawY + initY).toInt()
@@ -956,6 +961,7 @@ class CoreContext(
                     params.y = y
                     windowManager.updateViewLayout(overlay, params)
                 }
+
                 MotionEvent.ACTION_UP -> {
                     if (abs(overlayX - params.x) < CorePreferences.OVERLAY_CLICK_SENSITIVITY &&
                         abs(overlayY - params.y) < CorePreferences.OVERLAY_CLICK_SENSITIVITY
@@ -965,6 +971,7 @@ class CoreContext(
                     overlayX = params.x.toFloat()
                     overlayY = params.y.toFloat()
                 }
+
                 else -> return@setOnTouchListener false
             }
             true
@@ -1078,6 +1085,7 @@ class CoreContext(
                             )
                         }
                     }
+
                     FileUtils.MimeType.Video -> {
                         if (Compatibility.addVideoToMediaStore(context, content)) {
                             Log.i(
@@ -1089,6 +1097,7 @@ class CoreContext(
                             )
                         }
                     }
+
                     FileUtils.MimeType.Audio -> {
                         if (Compatibility.addAudioToMediaStore(context, content)) {
                             Log.i(
@@ -1100,6 +1109,7 @@ class CoreContext(
                             )
                         }
                     }
+
                     else -> {
                         Log.w(
                             "[Context] File [$filePath] isn't either an image, an audio file or a video [${content.type}/${content.subtype}], can't add it to the Media Store"

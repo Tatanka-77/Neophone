@@ -53,12 +53,15 @@ class EchoCancellerCalibrationViewModel : ViewModel() {
             EcCalibratorStatus.DoneNoEcho -> {
                 Log.i("[Assistant] [Echo Canceller Calibration] Done, no echo")
             }
+
             EcCalibratorStatus.Done -> {
                 Log.i("[Assistant] [Echo Canceller Calibration] Done, delay is ${delay}ms")
             }
+
             EcCalibratorStatus.Failed -> {
                 Log.w("[Assistant] [Echo Canceller Calibration] Failed")
             }
+
             EcCalibratorStatus.InProgress -> {
                 Log.i("[Assistant] [Echo Canceller Calibration] In progress")
             }

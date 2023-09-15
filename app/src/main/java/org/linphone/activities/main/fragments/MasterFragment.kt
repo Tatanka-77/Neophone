@@ -40,7 +40,8 @@ import org.linphone.utils.hideKeyboard
  * This fragment can be inherited by all fragments that will display a list
  * where items can be selected for removal through the ListTopBarFragment
  */
-abstract class MasterFragment<T : ViewDataBinding, U : SelectionListAdapter<*, *>> : SecureFragment<T>() {
+abstract class MasterFragment<T : ViewDataBinding, U : SelectionListAdapter<*, *>> :
+    SecureFragment<T>() {
     protected var _adapter: U? = null
     protected val adapter: U
         get() {
@@ -164,6 +165,6 @@ abstract class MasterFragment<T : ViewDataBinding, U : SelectionListAdapter<*, *
             isEnabled = false
         }
 
-        override fun onPanelSlide(panel: View, slideOffset: Float) { }
+        override fun onPanelSlide(panel: View, slideOffset: Float) {}
     }
 }

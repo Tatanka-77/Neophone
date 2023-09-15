@@ -44,7 +44,8 @@ class ContactEditorData(val friend: Friend?) : ContactDataInterface {
     override val contact: MutableLiveData<Friend> = MutableLiveData<Friend>()
     override val displayName: MutableLiveData<String> = MutableLiveData<String>()
     override val securityLevel: MutableLiveData<SecurityLevel> = MutableLiveData<SecurityLevel>()
-    override val presenceStatus: MutableLiveData<ConsolidatedPresence> = MutableLiveData<ConsolidatedPresence>()
+    override val presenceStatus: MutableLiveData<ConsolidatedPresence> =
+        MutableLiveData<ConsolidatedPresence>()
     override val coroutineScope: CoroutineScope = coreContext.coroutineScope
 
     val firstName = MutableLiveData<String>()
@@ -197,9 +198,11 @@ class ContactEditorData(val friend: Friend?) : ContactDataInterface {
             ExifInterface.ORIENTATION_ROTATE_90 ->
                 image =
                     ImageUtils.rotateImage(image, 90f)
+
             ExifInterface.ORIENTATION_ROTATE_180 ->
                 image =
                     ImageUtils.rotateImage(image, 180f)
+
             ExifInterface.ORIENTATION_ROTATE_270 ->
                 image =
                     ImageUtils.rotateImage(image, 270f)

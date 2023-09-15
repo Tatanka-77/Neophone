@@ -47,7 +47,10 @@ class LdapSettingsFragment : GenericSettingFragment<SettingsLdapFragmentBinding>
         }
 
         try {
-            viewModel = ViewModelProvider(this, LdapSettingsViewModelFactory(configIndex))[LdapSettingsViewModel::class.java]
+            viewModel = ViewModelProvider(
+                this,
+                LdapSettingsViewModelFactory(configIndex)
+            )[LdapSettingsViewModel::class.java]
         } catch (nsee: NoSuchElementException) {
             Log.e("[LDAP Settings] Failed to find LDAP object, aborting!")
             goBack()

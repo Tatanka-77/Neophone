@@ -45,14 +45,17 @@ class TelephonyListener(private val telephonyManager: TelephonyManager) : PhoneS
                     Log.i("[Context] Phone state is off hook")
                     true
                 }
+
                 TelephonyManager.CALL_STATE_RINGING -> {
                     Log.i("[Context] Phone state is ringing")
                     true
                 }
+
                 TelephonyManager.CALL_STATE_IDLE -> {
                     Log.i("[Context] Phone state is idle")
                     false
                 }
+
                 else -> {
                     Log.w("[Context] Phone state is unexpected: $state")
                     false
@@ -60,6 +63,7 @@ class TelephonyListener(private val telephonyManager: TelephonyManager) : PhoneS
             }
         }
     }
+
     private val telephonyListener = TelephonyListener()
 
     init {

@@ -102,7 +102,13 @@ open class ContactsSelectionViewModel : MessageNotifierViewModel() {
         }
         previousFilter = filterValue
 
-        val domain = if (sipContactsSelected.value == true) coreContext.core.defaultAccount?.params?.domain ?: "" else ""
+        val domain =
+            if (sipContactsSelected.value == true) {
+                coreContext.core.defaultAccount?.params?.domain
+                    ?: ""
+            } else {
+                ""
+            }
         searchResultsPending = true
         fastFetchJob?.cancel()
         coreContext.contactsManager.magicSearch.getContactsListAsync(

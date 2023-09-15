@@ -54,7 +54,10 @@ class AccountSettingsFragment : GenericSettingFragment<SettingsAccountFragmentBi
         }
 
         try {
-            viewModel = ViewModelProvider(this, AccountSettingsViewModelFactory(identity))[AccountSettingsViewModel::class.java]
+            viewModel = ViewModelProvider(
+                this,
+                AccountSettingsViewModelFactory(identity)
+            )[AccountSettingsViewModel::class.java]
         } catch (nsee: NoSuchElementException) {
             Log.e("[Account Settings] Failed to find Account object, aborting!")
             goBack()
@@ -102,7 +105,8 @@ class AccountSettingsFragment : GenericSettingFragment<SettingsAccountFragmentBi
             viewLifecycleOwner
         ) {
             it.consume {
-                val defaultDomainAccount = viewModel.account.params.identityAddress?.domain == corePreferences.defaultDomain
+                val defaultDomainAccount =
+                    viewModel.account.params.identityAddress?.domain == corePreferences.defaultDomain
                 Log.i(
                     "[Account Settings] User clicked on delete account, showing confirmation dialog for ${if (defaultDomainAccount) "default domain account" else "third party account"}"
                 )

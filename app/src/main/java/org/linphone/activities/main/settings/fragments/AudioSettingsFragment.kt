@@ -83,7 +83,8 @@ class AudioSettingsFragment : GenericSettingFragment<SettingsAudioFragmentBindin
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        val granted =
+            grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
         if (granted) {
             Log.i("[Audio Settings] RECORD_AUDIO permission granted")
             if (requestCode == 1) {

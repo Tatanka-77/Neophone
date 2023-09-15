@@ -339,7 +339,9 @@ class ContactsManager(private val context: Context) {
         Log.d(
             "[Contacts Manager] Received presence information for contact [${friend.name}]: [${friend.consolidatedPresence}]"
         )
-        if (corePreferences.storePresenceInNativeContact && PermissionHelper.get().hasWriteContactsPermission()) {
+        if (corePreferences.storePresenceInNativeContact && PermissionHelper.get()
+            .hasWriteContactsPermission()
+        ) {
             if (friend.refKey != null) {
                 Log.i("[Contacts Manager] Storing presence in native contact ${friend.refKey}")
                 storePresenceInNativeContact(friend)
@@ -433,7 +435,8 @@ fun Friend.getPictureUri(thumbnailPreferred: Boolean = false): Uri? {
                         fd.close()
                         return pictureUri
                     }
-                } catch (_: IOException) { }
+                } catch (_: IOException) {
+                }
             }
 
             // Fallback to thumbnail if high res picture isn't available
@@ -441,11 +444,13 @@ fun Friend.getPictureUri(thumbnailPreferred: Boolean = false): Uri? {
                 lookupUri,
                 ContactsContract.Contacts.Photo.CONTENT_DIRECTORY
             )
-        } catch (_: Exception) { }
+        } catch (_: Exception) {
+        }
     } else if (photo != null) {
         try {
             return Uri.parse(photo)
-        } catch (_: Exception) { }
+        } catch (_: Exception) {
+        }
     }
     return null
 }

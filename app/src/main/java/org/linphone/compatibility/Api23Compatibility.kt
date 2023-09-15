@@ -210,6 +210,7 @@ class Api23Compatibility {
                     val collection = MediaStore.Images.Media.getContentUri("external")
                     addContentValuesToCollection(context, filePath, collection, values)
                 }
+
                 isVideo -> {
                     val values = ContentValues().apply {
                         put(MediaStore.Video.Media.TITLE, fileName)
@@ -219,6 +220,7 @@ class Api23Compatibility {
                     val collection = MediaStore.Video.Media.getContentUri("external")
                     addContentValuesToCollection(context, filePath, collection, values)
                 }
+
                 isAudio -> {
                     val values = ContentValues().apply {
                         put(MediaStore.Audio.Media.TITLE, fileName)
@@ -228,6 +230,7 @@ class Api23Compatibility {
                     val collection = MediaStore.Audio.Media.getContentUri("external")
                     addContentValuesToCollection(context, filePath, collection, values)
                 }
+
                 else -> ""
             }
 

@@ -129,7 +129,8 @@ class ControlsViewModel : ViewModel() {
         ) {
             Log.i("[Call Controls] State changed: $state")
             isOutgoingEarlyMedia.value = state == Call.State.OutgoingEarlyMedia
-            isIncomingEarlyMediaVideo.value = state == Call.State.IncomingEarlyMedia && call.remoteParams?.isVideoEnabled == true
+            isIncomingEarlyMediaVideo.value =
+                state == Call.State.IncomingEarlyMedia && call.remoteParams?.isVideoEnabled == true
             attendedTransfer.value = core.callsNb > 1
 
             if (state == Call.State.StreamsRunning) {
@@ -141,7 +142,9 @@ class ControlsViewModel : ViewModel() {
                 fullScreenMode.value = false
             }
 
-            if (core.currentCall?.currentParams?.isVideoEnabled == true && !PermissionHelper.get().hasCameraPermission()) {
+            if (core.currentCall?.currentParams?.isVideoEnabled == true && !PermissionHelper.get()
+                .hasCameraPermission()
+            ) {
                 askPermissionEvent.value = Event(Manifest.permission.CAMERA)
             }
 
@@ -188,13 +191,14 @@ class ControlsViewModel : ViewModel() {
 
     val audioRoutesMenuTranslateY = MutableLiveData<Float>()
     private val audioRoutesMenuAnimator: ValueAnimator by lazy {
-        ValueAnimator.ofFloat(AppUtils.getDimension(R.dimen.voip_audio_routes_menu_translate_y), 0f).apply {
-            addUpdateListener {
-                val value = it.animatedValue as Float
-                audioRoutesMenuTranslateY.value = value
+        ValueAnimator.ofFloat(AppUtils.getDimension(R.dimen.voip_audio_routes_menu_translate_y), 0f)
+            .apply {
+                addUpdateListener {
+                    val value = it.animatedValue as Float
+                    audioRoutesMenuTranslateY.value = value
+                }
+                duration = if (corePreferences.enableAnimations) 500 else 0
             }
-            duration = if (corePreferences.enableAnimations) 500 else 0
-        }
     }
 
     val bouncyCounterTranslateY = MutableLiveData<Float>()
@@ -226,7 +230,8 @@ class ControlsViewModel : ViewModel() {
         audioRoutesSelected.value = false
         forceDisableProximitySensor.value = false
 
-        nonEarpieceOutputAudioDevice.value = coreContext.core.outputAudioDevice?.type != AudioDevice.Type.Earpiece
+        nonEarpieceOutputAudioDevice.value =
+            coreContext.core.outputAudioDevice?.type != AudioDevice.Type.Earpiece
         proximitySensorEnabled.value = shouldProximitySensorBeEnabled()
         proximitySensorEnabled.addSource(isVideoEnabled) {
             proximitySensorEnabled.value = shouldProximitySensorBeEnabled()
@@ -242,7 +247,8 @@ class ControlsViewModel : ViewModel() {
         val state = currentCall?.state ?: Call.State.Idle
         Log.i("[Call Controls] Current state is: $state")
         isOutgoingEarlyMedia.value = state == Call.State.OutgoingEarlyMedia
-        isIncomingEarlyMediaVideo.value = state == Call.State.IncomingEarlyMedia && currentCall?.remoteParams?.isVideoEnabled == true
+        isIncomingEarlyMediaVideo.value =
+            state == Call.State.IncomingEarlyMedia && currentCall?.remoteParams?.isVideoEnabled == true
 
         updateUI()
 
@@ -265,8 +271,7 @@ class ControlsViewModel : ViewModel() {
     }
 
     fun answer() {
-        val currentCall = coreContext.core.currentCall ?: coreContext.core.calls.find {
-                call ->
+        val currentCall = coreContext.core.currentCall ?: coreContext.core.calls.find { call ->
             call.state == Call.State.IncomingReceived || call.state == Call.State.IncomingEarlyMedia
         }
         if (currentCall != null) {
@@ -553,7 +558,8 @@ class ControlsViewModel : ViewModel() {
             true
         }
         isSendingVideo.value = isVideoBeingSent
-        isSwitchCameraAvailable.value = enabled && coreContext.showSwitchCameraButton() && isVideoBeingSent
+        isSwitchCameraAvailable.value =
+            enabled && coreContext.showSwitchCameraButton() && isVideoBeingSent
     }
 
     private fun shouldProximitySensorBeEnabled(): Boolean {

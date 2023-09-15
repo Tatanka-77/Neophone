@@ -47,7 +47,9 @@ import org.linphone.utils.DialogUtils
 import org.linphone.utils.FileUtils
 import org.linphone.utils.PermissionHelper
 
-class ContactEditorFragment : GenericFragment<ContactEditorFragmentBinding>(), SyncAccountPickerFragment.SyncAccountPickedListener {
+class ContactEditorFragment :
+    GenericFragment<ContactEditorFragmentBinding>(),
+    SyncAccountPickerFragment.SyncAccountPickedListener {
     private lateinit var data: ContactEditorData
     private var temporaryPicturePath: File? = null
 
@@ -60,11 +62,13 @@ class ContactEditorFragment : GenericFragment<ContactEditorFragmentBinding>(), S
 
         val contact = sharedViewModel.selectedContact.value
         val contactRefKey = contact?.refKey
-        val friend = if (contactRefKey != null) coreContext.core.getFriendByRefKey(contactRefKey) else null
+        val friend =
+            if (contactRefKey != null) coreContext.core.getFriendByRefKey(contactRefKey) else null
         data = ContactEditorData(friend ?: contact)
         binding.viewModel = data
 
-        useMaterialSharedAxisXForwardAnimation = sharedViewModel.isSlidingPaneSlideable.value == false
+        useMaterialSharedAxisXForwardAnimation =
+            sharedViewModel.isSlidingPaneSlideable.value == false
 
         binding.setAvatarClickListener {
             pickFile()
@@ -142,7 +146,8 @@ class ContactEditorFragment : GenericFragment<ContactEditorFragmentBinding>(), S
         grantResults: IntArray
     ) {
         if (requestCode == 0) {
-            val granted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+            val granted =
+                grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
             if (granted) {
                 Log.i("[Contact Editor] WRITE_CONTACTS permission granted")
             } else {

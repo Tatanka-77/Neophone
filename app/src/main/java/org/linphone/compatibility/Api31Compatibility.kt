@@ -208,6 +208,7 @@ class Api31Compatibility {
                 Call.State.Paused, Call.State.Pausing, Call.State.PausedByRemote -> {
                     R.drawable.topbar_call_paused_notification
                 }
+
                 else -> {
                     if (isVideo) {
                         R.drawable.topbar_videocall_notification

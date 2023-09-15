@@ -26,7 +26,8 @@ import org.linphone.activities.GenericFragment
 
 abstract class GenericSettingFragment<T : ViewDataBinding> : GenericFragment<T>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        useMaterialSharedAxisXForwardAnimation = sharedViewModel.isSlidingPaneSlideable.value == false
+        useMaterialSharedAxisXForwardAnimation =
+            sharedViewModel.isSlidingPaneSlideable.value == false
 
         super.onViewCreated(view, savedInstanceState)
     }

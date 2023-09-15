@@ -89,12 +89,14 @@ class SingleCallFragment : GenericVideoPreviewFragment<VoipSingleCallFragmentBin
                         )
                         navigateToIncomingCall()
                     }
+
                     Call.State.OutgoingRinging, Call.State.OutgoingEarlyMedia -> {
                         Log.i(
                             "[Single Call] New current call is in [$callState] state, switching to OutgoingCall fragment"
                         )
                         navigateToOutgoingCall()
                     }
+
                     else -> {
                         Log.i(
                             "[Single Call] New current call is in [$callState] state, updating call UI"

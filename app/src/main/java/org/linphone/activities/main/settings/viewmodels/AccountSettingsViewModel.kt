@@ -498,10 +498,12 @@ class AccountSettingsViewModel(val account: Account) : GenericSettingsViewModel(
         escapePlus.value = params.isDialEscapePlusEnabled
 
         conferenceFactoryUri.value = params.conferenceFactoryUri
-        audioVideoConferenceFactoryUri.value = params.audioVideoConferenceFactoryAddress?.asStringUriOnly()
+        audioVideoConferenceFactoryUri.value =
+            params.audioVideoConferenceFactoryAddress?.asStringUriOnly()
         limeServerUrl.value = params.limeServerUrl
 
-        hideLinkPhoneNumber.value = corePreferences.hideLinkPhoneNumber || params.identityAddress?.domain != corePreferences.defaultDomain
+        hideLinkPhoneNumber.value =
+            corePreferences.hideLinkPhoneNumber || params.identityAddress?.domain != corePreferences.defaultDomain
         disableBundleMode.value = !params.isRtpBundleEnabled
     }
 

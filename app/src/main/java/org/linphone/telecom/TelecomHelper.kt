@@ -44,7 +44,8 @@ import org.linphone.utils.SingletonHolder
 class TelecomHelper private constructor(context: Context) {
     companion object : SingletonHolder<TelecomHelper, Context>(::TelecomHelper)
 
-    private val telecomManager: TelecomManager = context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
+    private val telecomManager: TelecomManager =
+        context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
 
     private var account: PhoneAccount = initPhoneAccount(context)
 

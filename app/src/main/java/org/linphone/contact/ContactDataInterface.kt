@@ -48,8 +48,10 @@ interface ContactDataInterface {
 open class GenericContactData(private val sipAddress: Address) : ContactDataInterface {
     final override val contact: MutableLiveData<Friend> = MutableLiveData<Friend>()
     final override val displayName: MutableLiveData<String> = MutableLiveData<String>()
-    final override val securityLevel: MutableLiveData<SecurityLevel> = MutableLiveData<SecurityLevel>()
-    final override val presenceStatus: MutableLiveData<ConsolidatedPresence> = MutableLiveData<ConsolidatedPresence>()
+    final override val securityLevel: MutableLiveData<SecurityLevel> =
+        MutableLiveData<SecurityLevel>()
+    final override val presenceStatus: MutableLiveData<ConsolidatedPresence> =
+        MutableLiveData<ConsolidatedPresence>()
     final override val coroutineScope: CoroutineScope = coreContext.coroutineScope
 
     init {
@@ -75,11 +77,14 @@ open class GenericContactData(private val sipAddress: Address) : ContactDataInte
     }
 }
 
-abstract class GenericContactViewModel(private val sipAddress: Address) : MessageNotifierViewModel(), ContactDataInterface {
+abstract class GenericContactViewModel(private val sipAddress: Address) :
+    MessageNotifierViewModel(), ContactDataInterface {
     final override val contact: MutableLiveData<Friend> = MutableLiveData<Friend>()
     final override val displayName: MutableLiveData<String> = MutableLiveData<String>()
-    final override val securityLevel: MutableLiveData<SecurityLevel> = MutableLiveData<SecurityLevel>()
-    final override val presenceStatus: MutableLiveData<ConsolidatedPresence> = MutableLiveData<ConsolidatedPresence>()
+    final override val securityLevel: MutableLiveData<SecurityLevel> =
+        MutableLiveData<SecurityLevel>()
+    final override val presenceStatus: MutableLiveData<ConsolidatedPresence> =
+        MutableLiveData<ConsolidatedPresence>()
     final override val coroutineScope: CoroutineScope = viewModelScope
 
     init {

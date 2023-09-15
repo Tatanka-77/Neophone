@@ -33,14 +33,17 @@ class PhoneStateListener(private val telephonyManager: TelephonyManager) : Phone
                     Log.i("[Context] Phone state is off hook")
                     true
                 }
+
                 TelephonyManager.CALL_STATE_RINGING -> {
                     Log.i("[Context] Phone state is ringing")
                     true
                 }
+
                 TelephonyManager.CALL_STATE_IDLE -> {
                     Log.i("[Context] Phone state is idle")
                     false
                 }
+
                 else -> {
                     Log.w("[Context] Phone state is unexpected: $state")
                     false

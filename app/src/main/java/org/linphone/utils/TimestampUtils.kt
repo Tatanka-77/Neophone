@@ -44,7 +44,11 @@ class TimestampUtils {
             return isSameDay(cal, yesterday)
         }
 
-        fun isSameDay(timestamp1: Long, timestamp2: Long, timestampInSecs: Boolean = true): Boolean {
+        fun isSameDay(
+            timestamp1: Long,
+            timestamp2: Long,
+            timestampInSecs: Boolean = true
+        ): Boolean {
             val cal1 = Calendar.getInstance()
             cal1.timeInMillis = if (timestampInSecs) timestamp1 * 1000 else timestamp1
             val cal2 = Calendar.getInstance()

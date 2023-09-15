@@ -67,7 +67,8 @@ class StatItemData(val type: StatType) {
     val value = MutableLiveData<String>()
 
     fun update(call: Call, stats: CallStats) {
-        val payloadType = if (stats.type == StreamType.Audio) call.currentParams.usedAudioPayloadType else call.currentParams.usedVideoPayloadType
+        val payloadType =
+            if (stats.type == StreamType.Audio) call.currentParams.usedAudioPayloadType else call.currentParams.usedVideoPayloadType
         payloadType ?: return
         value.value = when (type) {
             StatType.CAPTURE -> if (stats.type == StreamType.Audio) {
@@ -77,6 +78,7 @@ class StatItemData(val type: StatType) {
             } else {
                 call.core.videoDevice
             }
+
             StatType.PLAYBACK -> if (stats.type == StreamType.Audio) {
                 audioDeviceToString(
                     call.outputAudioDevice
@@ -84,6 +86,7 @@ class StatItemData(val type: StatType) {
             } else {
                 call.core.videoDisplayFilter
             }
+
             StatType.PAYLOAD -> "${payloadType.mimeType}/${payloadType.clockRate / 1000} kHz"
             StatType.ENCODER -> call.core.mediastreamerFactory.getDecoderText(payloadType.mimeType)
             StatType.DECODER -> call.core.mediastreamerFactory.getEncoderText(payloadType.mimeType)
@@ -110,18 +113,23 @@ class StatItemData(val type: StatType) {
                             AppUtils.getString(R.string.call_settings_media_encryption_zrtp)
                         }
                     }
+
                     MediaEncryption.DTLS -> AppUtils.getString(
                         R.string.call_settings_media_encryption_dtls
                     )
+
                     MediaEncryption.SRTP -> AppUtils.getString(
                         R.string.call_settings_media_encryption_srtp
                     )
+
                     MediaEncryption.None -> AppUtils.getString(
                         R.string.call_settings_media_encryption_none
                     )
+
                     else -> "Unexpected!"
                 }
             }
+
             StatType.ZRTP_CIPHER_ALGO -> stats.zrtpCipherAlgo
             StatType.ZRTP_KEY_AGREEMENT_ALGO -> stats.zrtpKeyAgreementAlgo
             StatType.ZRTP_HASH_ALGO -> stats.zrtpHashAlgo

@@ -79,15 +79,20 @@ class ConferenceParticipantDeviceData(
                 "[Conference Participant Device] Participant [${participantDevice.address.asStringUriOnly()}] state has changed: $state"
             )
             when (state) {
-                ParticipantDevice.State.Joining, ParticipantDevice.State.Alerting -> isJoining.value = true
+                ParticipantDevice.State.Joining, ParticipantDevice.State.Alerting ->
+                    isJoining.value =
+                        true
+
                 ParticipantDevice.State.OnHold -> {
                     isInConference.value = false
                 }
+
                 ParticipantDevice.State.Present -> {
                     isJoining.value = false
                     isInConference.value = true
                     updateWindowId(textureView)
                 }
+
                 else -> {}
             }
         }
@@ -101,7 +106,8 @@ class ConferenceParticipantDeviceData(
                 Log.i(
                     "[Conference Participant Device] Participant [${participantDevice.address.asStringUriOnly()}] video capability changed to $direction"
                 )
-                isSendingVideo.value = direction == MediaDirection.SendRecv || direction == MediaDirection.SendOnly
+                isSendingVideo.value =
+                    direction == MediaDirection.SendRecv || direction == MediaDirection.SendOnly
             }
         }
 
@@ -134,11 +140,13 @@ class ConferenceParticipantDeviceData(
 
         videoAvailable.value = participantDevice.getStreamAvailability(StreamType.Video)
         val videoCapability = participantDevice.getStreamCapability(StreamType.Video)
-        isSendingVideo.value = videoCapability == MediaDirection.SendRecv || videoCapability == MediaDirection.SendOnly
+        isSendingVideo.value =
+            videoCapability == MediaDirection.SendRecv || videoCapability == MediaDirection.SendOnly
         isInConference.value = participantDevice.isInConference
 
         val state = participantDevice.state
-        isJoining.value = state == ParticipantDevice.State.Joining || state == ParticipantDevice.State.Alerting
+        isJoining.value =
+            state == ParticipantDevice.State.Joining || state == ParticipantDevice.State.Alerting
         Log.i(
             "[Conference Participant Device] State for participant [${participantDevice.address.asStringUriOnly()}] is $state"
         )

@@ -2,13 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="androidx.core.content.ContextCompat"/>
+
+        <import type="androidx.core.content.ContextCompat" />
+
         <variable
             name="title"
             type="Integer" />
+
         <variable
             name="textColor"
             type="Integer" />
+
         <variable
             name="icon"
             type="Integer" />
@@ -24,8 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@color/header_background_color"
             android:gravity="center"
-            android:orientation="horizontal">
-        </LinearLayout>
+            android:orientation="horizontal"></LinearLayout>
 
         <View
             android:layout_width="match_parent"

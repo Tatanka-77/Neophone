@@ -6,14 +6,14 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-def appVersionName = "1.0.2"
-def appVersionCode = 1002
+def appVersionName = "1.0.3"
+def appVersionCode = 1003
 
 def packageName = "org.neophone"
 
-def firebaseAvailable = new File(projectDir.absolutePath +'/google-services.json').exists()
+def firebaseAvailable = new File(projectDir.absolutePath + '/google-services.json').exists()
 
-def crashlyticsAvailable = new File(projectDir.absolutePath +'/google-services.json').exists() && new File(LinphoneSdkBuildDir + '/libs/').exists() && new File(LinphoneSdkBuildDir + '/libs-debug/').exists()
+def crashlyticsAvailable = new File(projectDir.absolutePath + '/google-services.json').exists() && new File(LinphoneSdkBuildDir + '/libs/').exists() && new File(LinphoneSdkBuildDir + '/libs-debug/').exists()
 
 def extractNativeLibs = false
 
@@ -105,14 +105,14 @@ android {
         // See https://developer.android.com/studio/releases/gradle-plugin#3-6-0-behavior for why extractNativeLibs is set to true in debug flavor
         if (variant.buildType.name == "release" || variant.buildType.name == "releaseWithCrashlytics") {
             variant.getMergedFlavor().manifestPlaceholders = [linphone_address_mime_type: "vnd.android.cursor.item/vnd." + packageName + ".provider.sip_address",
-                                                              linphone_file_provider: packageName + ".fileprovider",
-                                                              appLabel: "@string/app_name",
-                                                              firebaseServiceEnabled: enableFirebaseService]
+                                                              linphone_file_provider    : packageName + ".fileprovider",
+                                                              appLabel                  : "@string/app_name",
+                                                              firebaseServiceEnabled    : enableFirebaseService]
         } else {
             variant.getMergedFlavor().manifestPlaceholders = [linphone_address_mime_type: "vnd.android.cursor.item/vnd." + packageName + ".provider.sip_address",
-                                                              linphone_file_provider: packageName + ".debug.fileprovider",
-                                                              appLabel: "@string/app_name_debug",
-                                                              firebaseServiceEnabled: enableFirebaseService]
+                                                              linphone_file_provider    : packageName + ".debug.fileprovider",
+                                                              appLabel                  : "@string/app_name_debug",
+                                                              firebaseServiceEnabled    : enableFirebaseService]
             extractNativeLibs = true
         }
     }
@@ -262,9 +262,10 @@ task generateContactsXml(type: Copy) {
     into "src/main/res/xml/"
     outputs.upToDateWhen { file('src/main/res/xml/contacts.xml').exists() }
     filter {
-        line -> line
-                .replaceAll('%%AUTO_GENERATED%%', 'This file has been automatically generated, do not edit or commit !')
-                .replaceAll('%%PACKAGE_NAME%%', packageName)
+        line ->
+            line
+                    .replaceAll('%%AUTO_GENERATED%%', 'This file has been automatically generated, do not edit or commit !')
+                    .replaceAll('%%PACKAGE_NAME%%', packageName)
 
     }
 }

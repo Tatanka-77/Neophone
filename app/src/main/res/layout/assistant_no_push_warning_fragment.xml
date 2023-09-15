@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="understoodClickListener"
-            type="android.view.View.OnClickListener"/>
+            type="android.view.View.OnClickListener" />
     </data>
 
     <RelativeLayout
@@ -25,10 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/top_bar_fragment"
-            android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/warning_text"
@@ -37,19 +39,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_marginTop="20dp"
-                android:text="@string/assistant_no_push_warning"/>
+                android:text="@string/assistant_no_push_warning" />
 
             <TextView
-                android:textColor="?attr/accentColor"
-                android:textSize="16sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:autoLink="web"
                 android:gravity="center"
                 android:paddingTop="10dp"
+                android:text="@string/assistant_forgotten_password_link"
+                android:textColor="?attr/accentColor"
                 android:textColorLink="@color/primary_color"
-                android:text="@string/assistant_forgotten_password_link" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 

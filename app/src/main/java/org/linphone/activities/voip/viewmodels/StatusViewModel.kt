@@ -128,17 +128,21 @@ class StatusViewModel : StatusViewModel() {
                 encryptionIconVisible.value = true
                 encryptionContentDescription.value = R.string.content_description_call_secured
             }
+
             MediaEncryption.ZRTP -> {
-                encryptionIcon.value = when (call.authenticationTokenVerified || call.authenticationToken == null) {
-                    true -> R.drawable.security_ok
-                    else -> R.drawable.security_pending
-                }
-                encryptionContentDescription.value = when (call.authenticationTokenVerified || call.authenticationToken == null) {
-                    true -> R.string.content_description_call_secured
-                    else -> R.string.content_description_call_security_pending
-                }
+                encryptionIcon.value =
+                    when (call.authenticationTokenVerified || call.authenticationToken == null) {
+                        true -> R.drawable.security_ok
+                        else -> R.drawable.security_pending
+                    }
+                encryptionContentDescription.value =
+                    when (call.authenticationTokenVerified || call.authenticationToken == null) {
+                        true -> R.string.content_description_call_secured
+                        else -> R.string.content_description_call_security_pending
+                    }
                 encryptionIconVisible.value = true
             }
+
             MediaEncryption.None -> {
                 encryptionIcon.value = R.drawable.security_ko
                 // Do not show unsecure icon if user doesn't want to do call encryption

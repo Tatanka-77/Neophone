@@ -112,7 +112,8 @@ class ContactsListAdapter(
         val firstLetter = contact.fullName.firstOrNull().toString()
         val previousPosition = position - 1
         return if (previousPosition >= 0) {
-            val previousItemFirstLetter = getItem(previousPosition).fullName.firstOrNull().toString()
+            val previousItemFirstLetter =
+                getItem(previousPosition).fullName.firstOrNull().toString()
             !firstLetter.equals(previousItemFirstLetter, ignoreCase = true)
         } else {
             true

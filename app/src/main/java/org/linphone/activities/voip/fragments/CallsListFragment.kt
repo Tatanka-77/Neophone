@@ -86,11 +86,12 @@ class CallsListFragment : GenericVideoPreviewFragment<VoipCallsListFragmentBindi
         conferenceViewModel.conferenceDisplayMode.observe(
             viewLifecycleOwner
         ) {
-            binding.localPreviewVideoSurface.visibility = if (it == ConferenceDisplayMode.AUDIO_ONLY) {
-                View.GONE
-            } else {
-                View.VISIBLE
-            }
+            binding.localPreviewVideoSurface.visibility =
+                if (it == ConferenceDisplayMode.AUDIO_ONLY) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
         }
     }
 

@@ -2,10 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="data"
             type="org.linphone.core.Address" />
+
         <variable
             name="parent"
             type="org.linphone.contact.ContactsSelectionViewModel" />
@@ -14,19 +17,19 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:layout_marginRight="5dp"
         android:gravity="center_vertical|left"
-        android:layout_marginRight="5dp">
+        android:orientation="horizontal">
 
         <TextView
-            android:text="@{data.displayName ?? data.username}"
             style="@style/contact_name_list_cell_font"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:gravity="center"
             android:lines="1"
-            android:scrollHorizontally="true" />
+            android:scrollHorizontally="true"
+            android:text="@{data.displayName ?? data.username}" />
 
     </LinearLayout>
 

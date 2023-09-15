@@ -86,7 +86,10 @@ import org.linphone.utils.ShortcutsHelper
 import org.linphone.utils.hideKeyboard
 import org.linphone.utils.setKeyboardInsetListener
 
-class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestinationChangedListener {
+class MainActivity :
+    GenericActivity(),
+    SnackBarActivity,
+    NavController.OnDestinationChangedListener {
     private lateinit var binding: MainActivityBinding
     private lateinit var sharedViewModel: SharedMainViewModel
     private lateinit var callOverlayViewModel: CallOverlayViewModel
@@ -112,7 +115,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
     private var overlay: View? = null
 
     private val componentCallbacks = object : ComponentCallbacks2 {
-        override fun onConfigurationChanged(newConfig: Configuration) { }
+        override fun onConfigurationChanged(newConfig: Configuration) {}
 
         override fun onLowMemory() {
             Log.w("[Main Activity] onLowMemory !")
@@ -259,11 +262,13 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
         findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener(this)
 
         binding.rootCoordinatorLayout.setKeyboardInsetListener { keyboardVisible ->
-            val portraitOrientation = resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE
+            val portraitOrientation =
+                resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE
             Log.i(
                 "[Main Activity] Keyboard is ${if (keyboardVisible) "visible" else "invisible"}, orientation is ${if (portraitOrientation) "portrait" else "landscape"}"
             )
-            shouldTabsBeVisibleDueToOrientationAndKeyboard = !portraitOrientation || !keyboardVisible
+            shouldTabsBeVisibleDueToOrientationAndKeyboard =
+                !portraitOrientation || !keyboardVisible
             updateTabsFragmentVisibility()
 
             for (listener in keyboardVisibilityListeners) {
@@ -298,6 +303,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
         shouldTabsBeVisibleDependingOnDestination = when (destination.id) {
             R.id.masterCallLogsFragment, R.id.masterContactsFragment, R.id.dialerFragment, R.id.masterChatRoomsFragment ->
                 true
+
             else -> false
         }
         updateTabsFragmentVisibility()
@@ -330,7 +336,8 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
     }
 
     private fun updateTabsFragmentVisibility() {
-        tabsFragment.visibility = if (shouldTabsBeVisibleDependingOnDestination && shouldTabsBeVisibleDueToOrientationAndKeyboard) View.VISIBLE else View.GONE
+        tabsFragment.visibility =
+            if (shouldTabsBeVisibleDependingOnDestination && shouldTabsBeVisibleDueToOrientationAndKeyboard) View.VISIBLE else View.GONE
     }
 
     private fun handleIntentParams(intent: Intent) {
@@ -349,11 +356,13 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                     }
                 }
             }
+
             Intent.ACTION_SEND_MULTIPLE -> {
                 lifecycleScope.launch {
                     handleSendMultipleFiles(intent)
                 }
             }
+
             Intent.ACTION_VIEW -> {
                 val uri = intent.data
                 if (uri != null) {
@@ -388,12 +397,14 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                     }
                 }
             }
+
             Intent.ACTION_DIAL, Intent.ACTION_CALL -> {
                 val uri = intent.data
                 if (uri != null) {
                     handleTelOrSipUri(uri)
                 }
             }
+
             Intent.ACTION_VIEW_LOCUS -> {
                 if (corePreferences.disableChat) return
                 val locus = Compatibility.extractLocusIdFromIntent(intent)
@@ -402,6 +413,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                     handleLocusOrShortcut(locus)
                 }
             }
+
             else -> handleMainIntent(intent)
         }
 
@@ -423,6 +435,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                 Log.i("[Main Activity] Found contact ID in extras: $id")
                 navigateToContact(id)
             }
+
             intent.hasExtra("Chat") -> {
                 if (corePreferences.disableChat) return
 
@@ -438,18 +451,21 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                     navigateToChatRooms()
                 }
             }
+
             intent.hasExtra("Dialer") -> {
                 Log.i("[Main Activity] Found dialer intent extra, go to dialer")
                 val isTransfer = intent.getBooleanExtra("Transfer", false)
                 sharedViewModel.pendingCallTransfer = isTransfer
                 navigateToDialer()
             }
+
             intent.hasExtra("Contacts") -> {
                 Log.i("[Main Activity] Found contacts intent extra, go to contacts list")
                 val isTransfer = intent.getBooleanExtra("Transfer", false)
                 sharedViewModel.pendingCallTransfer = isTransfer
                 navigateToContacts()
             }
+
             else -> {
                 val core = coreContext.core
                 val call = core.currentCall ?: core.calls.firstOrNull()
@@ -480,10 +496,12 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                 Log.i("[Main Activity] Removing tel: prefix")
                 addressToCall = addressToCall.substring("tel:".length)
             }
+
             addressToCall.startsWith("linphone:") -> {
                 Log.i("[Main Activity] Removing linphone: prefix")
                 addressToCall = addressToCall.substring("linphone:".length)
             }
+
             addressToCall.startsWith("sip-linphone:") -> {
                 Log.i("[Main Activity] Removing linphone: sip-linphone")
                 addressToCall = addressToCall.substring("sip-linphone:".length)
@@ -584,10 +602,13 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
             when {
                 addressToIM.startsWith("sms:") ->
                     addressToIM = addressToIM.substring("sms:".length)
+
                 addressToIM.startsWith("smsto:") ->
                     addressToIM = addressToIM.substring("smsto:".length)
+
                 addressToIM.startsWith("mms:") ->
                     addressToIM = addressToIM.substring("mms:".length)
+
                 addressToIM.startsWith("mmsto:") ->
                     addressToIM = addressToIM.substring("mmsto:".length)
             }
@@ -603,7 +624,8 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
             )
             navigateToChatRoom(localAddress, peerAddress)
         } else {
-            val shortcutId = intent.getStringExtra("android.intent.extra.shortcut.ID") // Intent.EXTRA_SHORTCUT_ID
+            val shortcutId =
+                intent.getStringExtra("android.intent.extra.shortcut.ID") // Intent.EXTRA_SHORTCUT_ID
             if (shortcutId != null) {
                 Log.i("[Main Activity] Found shortcut ID: $shortcutId")
                 handleLocusOrShortcut(shortcutId)
@@ -644,6 +666,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                     initPosX = view.x
                     initPosY = view.y
                 }
+
                 MotionEvent.ACTION_MOVE -> {
                     view.animate()
                         .x(event.rawX + overlayX)
@@ -651,6 +674,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                         .setDuration(0)
                         .start()
                 }
+
                 MotionEvent.ACTION_UP -> {
                     if (abs(initPosX - view.x) < CorePreferences.OVERLAY_CLICK_SENSITIVITY &&
                         abs(initPosY - view.y) < CorePreferences.OVERLAY_CLICK_SENSITIVITY
@@ -658,6 +682,7 @@ class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestin
                         view.performClick()
                     }
                 }
+
                 else -> return@setOnTouchListener false
             }
             true

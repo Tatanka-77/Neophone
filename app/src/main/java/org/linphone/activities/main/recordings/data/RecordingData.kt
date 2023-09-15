@@ -41,7 +41,8 @@ import org.linphone.core.tools.Log
 import org.linphone.utils.AudioRouteUtils
 import org.linphone.utils.LinphoneUtils
 
-class RecordingData(val path: String, private val recordingListener: RecordingListener) : Comparable<RecordingData> {
+class RecordingData(val path: String, private val recordingListener: RecordingListener) :
+    Comparable<RecordingData> {
     companion object {
         val RECORD_PATTERN: Pattern =
             Pattern.compile(".*/(.*)_(\\d{2}-\\d{2}-\\d{4}-\\d{2}-\\d{2}-\\d{2})\\..*")
@@ -71,9 +72,10 @@ class RecordingData(val path: String, private val recordingListener: RecordingLi
             surface: SurfaceTexture,
             width: Int,
             height: Int
-        ) { }
+        ) {
+        }
 
-        override fun onSurfaceTextureUpdated(surface: SurfaceTexture) { }
+        override fun onSurfaceTextureUpdated(surface: SurfaceTexture) {}
 
         override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
             player.setWindowId(null)
@@ -176,7 +178,8 @@ class RecordingData(val path: String, private val recordingListener: RecordingLi
     }
 
     private fun initPlayer() {
-        val playbackSoundCard = AudioRouteUtils.getAudioPlaybackDeviceIdForCallRecordingOrVoiceMessage()
+        val playbackSoundCard =
+            AudioRouteUtils.getAudioPlaybackDeviceIdForCallRecordingOrVoiceMessage()
         Log.i("[Recording] Using device $playbackSoundCard to make the call recording playback")
 
         val localPlayer = coreContext.core.createLocalPlayer(playbackSoundCard, null, null)
@@ -198,7 +201,12 @@ class RecordingData(val path: String, private val recordingListener: RecordingLi
     private fun updatePosition() {
         val progress = if (isClosed()) 0 else player.currentPosition
         position.postValue(progress)
-        formattedPosition.postValue(SimpleDateFormat("mm:ss", Locale.getDefault()).format(progress)) // is already in milliseconds
+        formattedPosition.postValue(
+            SimpleDateFormat(
+                "mm:ss",
+                Locale.getDefault()
+            ).format(progress)
+        ) // is already in milliseconds
     }
 
     private fun stop() {

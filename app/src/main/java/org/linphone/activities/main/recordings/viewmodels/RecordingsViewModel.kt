@@ -43,9 +43,10 @@ class RecordingsViewModel : ViewModel() {
     private val recordingListener = object : RecordingData.RecordingListener {
         override fun onPlayingStarted(videoAvailable: Boolean) {
             if (recordingPlayingAudioFocusRequest == null) {
-                recordingPlayingAudioFocusRequest = AppUtils.acquireAudioFocusForVoiceRecordingOrPlayback(
-                    coreContext.context
-                )
+                recordingPlayingAudioFocusRequest =
+                    AppUtils.acquireAudioFocusForVoiceRecordingOrPlayback(
+                        coreContext.context
+                    )
             }
 
             isVideoVisible.value = videoAvailable

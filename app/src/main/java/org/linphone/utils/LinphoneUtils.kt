@@ -215,7 +215,8 @@ class LinphoneUtils {
 
         @SuppressLint("MissingPermission")
         fun checkIfNetworkHasLowBandwidth(context: Context): Boolean {
-            val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connMgr =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
             if (networkInfo != null && networkInfo.isConnected) {
                 if (networkInfo.type == ConnectivityManager.TYPE_MOBILE) {

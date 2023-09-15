@@ -116,9 +116,10 @@ class ContactsSelectionAdapter(
             val securityEnabled = requireLimeCapability.value ?: false
             val groupCapabilityRequired = requireGroupChatCapability.value ?: false
             val searchAddress = searchResult.address
-            val isMyself = securityEnabled && searchAddress != null && coreContext.core.defaultAccount?.params?.identityAddress?.weakEqual(
-                searchAddress
-            ) ?: false
+            val isMyself =
+                securityEnabled && searchAddress != null && coreContext.core.defaultAccount?.params?.identityAddress?.weakEqual(
+                    searchAddress
+                ) ?: false
             val limeCheck = !securityEnabled || (
                 securityEnabled && searchResult.hasCapability(
                     Capability.LimeX3Dh
@@ -129,7 +130,8 @@ class ContactsSelectionAdapter(
                     Capability.GroupChat
                 )
                 )
-            val disabled = if (searchResult.friend != null) !limeCheck || !groupCheck || isMyself else false // Generated entry from search filter
+            val disabled =
+                if (searchResult.friend != null) !limeCheck || !groupCheck || isMyself else false // Generated entry from search filter
 
             viewModel.isDisabled.value = disabled
 

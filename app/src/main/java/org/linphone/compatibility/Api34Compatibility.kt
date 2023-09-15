@@ -36,7 +36,8 @@ import org.linphone.core.tools.Log
 class Api34Compatibility {
     companion object {
         fun hasFullScreenIntentPermission(context: Context): Boolean {
-            val notificationManager = context.getSystemService(NotificationManager::class.java) as NotificationManager
+            val notificationManager =
+                context.getSystemService(NotificationManager::class.java) as NotificationManager
             // See https://developer.android.com/reference/android/app/NotificationManager#canUseFullScreenIntent%28%29
             return notificationManager.canUseFullScreenIntent()
         }

@@ -35,7 +35,8 @@ class Api27Compatibility {
         }
 
         fun requestDismissKeyguard(activity: Activity) {
-            val keyguardManager = activity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+            val keyguardManager =
+                activity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
             keyguardManager.requestDismissKeyguard(activity, null)
         }
     }

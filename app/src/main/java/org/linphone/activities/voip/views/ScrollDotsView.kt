@@ -100,7 +100,9 @@ class ScrollDotsView : View {
         }
     }
 
-    constructor(context: Context) : super(context) { init(context) }
+    constructor(context: Context) : super(context) {
+        init(context)
+    }
 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
@@ -163,8 +165,10 @@ class ScrollDotsView : View {
         val marginBetweenItems = context.resources.getDimension(
             R.dimen.voip_active_speaker_miniature_margin
         )
-        itemWidth = context.resources.getDimension(R.dimen.voip_active_speaker_miniature_size) + marginBetweenItems
-        itemHeight = context.resources.getDimension(R.dimen.voip_active_speaker_miniature_size) + marginBetweenItems
+        itemWidth =
+            context.resources.getDimension(R.dimen.voip_active_speaker_miniature_size) + marginBetweenItems
+        itemHeight =
+            context.resources.getDimension(R.dimen.voip_active_speaker_miniature_size) + marginBetweenItems
 
         Log.d(
             "[Scroll Dots] Screen size is $screenWidth/$screenHeight and item size is $itemWidth/$itemHeight"

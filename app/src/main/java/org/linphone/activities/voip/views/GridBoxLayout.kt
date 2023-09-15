@@ -87,7 +87,8 @@ class GridBoxLayout : GridLayout {
             val neededColumns = placementMatrix[index - 1][childCount - 1]
             val candidateWidth = 1 * availableSize.first / neededColumns
             val candidateHeight = 1 * availableSize.second / index
-            val candidateSize = if (candidateWidth < candidateHeight) candidateWidth else candidateHeight
+            val candidateSize =
+                if (candidateWidth < candidateHeight) candidateWidth else candidateHeight
             if (candidateSize > cellSize) {
                 columnCount = neededColumns
                 rowCount = index

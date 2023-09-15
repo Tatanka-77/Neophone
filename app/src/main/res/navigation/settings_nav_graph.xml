@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/settings_nav_graph_xml"
     app:startDestination="@id/emptySettingsFragment">
 
     <fragment
         android:id="@+id/emptySettingsFragment"
         android:name="org.linphone.activities.main.fragments.EmptyFragment"
-        tools:layout="@layout/empty_fragment"
-        android:label="EmptySettingsFragment" />
+        android:label="EmptySettingsFragment"
+        tools:layout="@layout/empty_fragment" />
 
-    <action android:id="@+id/action_global_emptySettingsFragment"
+    <action
+        android:id="@+id/action_global_emptySettingsFragment"
         app:destination="@id/emptySettingsFragment" />
 
     <fragment
         android:id="@+id/accountSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.AccountSettingsFragment"
-        tools:layout="@layout/settings_account_fragment"
-        android:label="AccountSettingsFragment" >
+        android:label="AccountSettingsFragment"
+        tools:layout="@layout/settings_account_fragment">
         <argument
             android:name="Identity"
             app:argType="string" />
@@ -29,23 +30,23 @@
     <fragment
         android:id="@+id/advancedSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.AdvancedSettingsFragment"
-        tools:layout="@layout/settings_advanced_fragment"
-        android:label="AdvancedSettingsFragment" />
+        android:label="AdvancedSettingsFragment"
+        tools:layout="@layout/settings_advanced_fragment" />
     <fragment
         android:id="@+id/audioSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.AudioSettingsFragment"
-        tools:layout="@layout/settings_audio_fragment"
-        android:label="AudioSettingsFragment" />
+        android:label="AudioSettingsFragment"
+        tools:layout="@layout/settings_audio_fragment" />
     <fragment
         android:id="@+id/callSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.CallSettingsFragment"
-        tools:layout="@layout/settings_call_fragment"
-        android:label="CallSettingsFragment" />
+        android:label="CallSettingsFragment"
+        tools:layout="@layout/settings_call_fragment" />
     <fragment
         android:id="@+id/contactsSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.ContactsSettingsFragment"
-        tools:layout="@layout/settings_contacts_fragment"
-        android:label="ContactsSettingsFragment" >
+        android:label="ContactsSettingsFragment"
+        tools:layout="@layout/settings_contacts_fragment">
         <action
             android:id="@+id/action_contactsSettingsFragment_to_ldapSettingsFragment"
             app:destination="@id/ldapSettingsFragment" />
@@ -53,18 +54,18 @@
     <fragment
         android:id="@+id/networkSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.NetworkSettingsFragment"
-        tools:layout="@layout/settings_network_fragment"
-        android:label="NetworkSettingsFragment" />
+        android:label="NetworkSettingsFragment"
+        tools:layout="@layout/settings_network_fragment" />
     <fragment
         android:id="@+id/videoSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.VideoSettingsFragment"
-        tools:layout="@layout/settings_video_fragment"
-        android:label="VideoSettingsFragment" />
+        android:label="VideoSettingsFragment"
+        tools:layout="@layout/settings_video_fragment" />
     <fragment
         android:id="@+id/tunnelSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.TunnelSettingsFragment"
-        tools:layout="@layout/settings_tunnel_fragment"
-        android:label="TunnelSettingsFragment" />
+        android:label="TunnelSettingsFragment"
+        tools:layout="@layout/settings_tunnel_fragment" />
     <action
         android:id="@+id/action_global_tunnelSettingsFragment"
         app:destination="@id/tunnelSettingsFragment" />
@@ -88,15 +89,15 @@
         app:destination="@id/advancedSettingsFragment" />
     <action
         android:id="@+id/action_global_conferencesSettingsFragment"
-        app:destination="@id/conferencesSettingsFragment"/>
+        app:destination="@id/conferencesSettingsFragment" />
     <action
         android:id="@+id/action_global_audioSettingsFragment"
         app:destination="@id/audioSettingsFragment" />
     <fragment
         android:id="@+id/phoneAccountLinkingFragment"
-        tools:layout="@layout/assistant_phone_account_linking_fragment"
         android:name="org.linphone.activities.assistant.fragments.PhoneAccountLinkingFragment"
-        android:label="PhoneAccountLinkingFragment" >
+        android:label="PhoneAccountLinkingFragment"
+        tools:layout="@layout/assistant_phone_account_linking_fragment">
         <action
             android:id="@+id/action_phoneAccountLinkingFragment_to_phoneAccountValidationFragment"
             app:destination="@id/phoneAccountValidationFragment" />
@@ -114,9 +115,9 @@
     </fragment>
     <fragment
         android:id="@+id/phoneAccountValidationFragment"
-        tools:layout="@layout/assistant_phone_account_validation_fragment"
         android:name="org.linphone.activities.assistant.fragments.PhoneAccountValidationFragment"
-        android:label="PhoneAccountValidationFragment" >
+        android:label="PhoneAccountValidationFragment"
+        tools:layout="@layout/assistant_phone_account_validation_fragment">
         <action
             android:id="@+id/action_phoneAccountValidationFragment_to_accountSettingsFragment"
             app:destination="@id/accountSettingsFragment" />
@@ -136,11 +137,11 @@
     <fragment
         android:id="@+id/ldapSettingsFragment"
         android:name="org.linphone.activities.main.settings.fragments.LdapSettingsFragment"
-        tools:layout="@layout/settings_ldap_fragment"
-        android:label="LdapSettingsFragment" />
+        android:label="LdapSettingsFragment"
+        tools:layout="@layout/settings_ldap_fragment" />
     <fragment
         android:id="@+id/conferencesSettingsFragment"
-        tools:layout="@layout/settings_conferences_fragment"
         android:name="org.linphone.activities.main.settings.fragments.ConferencesSettingsFragment"
-        android:label="ConferencesSettingsFragment" />
+        android:label="ConferencesSettingsFragment"
+        tools:layout="@layout/settings_conferences_fragment" />
 </navigation>

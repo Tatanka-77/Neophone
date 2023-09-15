@@ -40,7 +40,8 @@ class DummySyncAdapter(context: Context, autoInit: Boolean) : AbstractThreadedSy
         authority: String?,
         provider: ContentProviderClient?,
         syncResult: SyncResult?
-    ) { }
+    ) {
+    }
 }
 
 class DummySyncService : Service() {

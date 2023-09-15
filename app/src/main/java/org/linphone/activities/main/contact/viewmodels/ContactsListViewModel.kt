@@ -125,7 +125,13 @@ class ContactsListViewModel : ViewModel() {
         }
         previousFilter = filterValue
 
-        val domain = if (sipContactsSelected.value == true) coreContext.core.defaultAccount?.params?.domain ?: "" else ""
+        val domain =
+            if (sipContactsSelected.value == true) {
+                coreContext.core.defaultAccount?.params?.domain
+                    ?: ""
+            } else {
+                ""
+            }
         val sources = MagicSearch.Source.Friends.toInt() or MagicSearch.Source.LdapServers.toInt()
         val aggregation = MagicSearch.Aggregation.Friend
         searchResultsPending = true

@@ -45,7 +45,8 @@ class LdapSettingsViewModelFactory(private val index: Int) :
     }
 }
 
-class LdapSettingsViewModel(private val ldap: Ldap, val index: String) : GenericSettingsViewModel() {
+class LdapSettingsViewModel(private val ldap: Ldap, val index: String) :
+    GenericSettingsViewModel() {
     lateinit var ldapSettingsListener: SettingListenerStub
 
     val ldapConfigDeletedEvent: MutableLiveData<Event<Boolean>> by lazy {

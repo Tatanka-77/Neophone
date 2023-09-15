@@ -168,7 +168,10 @@ class FileUtils {
             return file
         }
 
-        suspend fun getFilesPathFromPickerIntent(data: Intent?, temporaryImageFilePath: File?): List<String> {
+        suspend fun getFilesPathFromPickerIntent(
+            data: Intent?,
+            temporaryImageFilePath: File?
+        ): List<String> {
             var filePath: String? = null
             if (data != null) {
                 val clipData = data.clipData
@@ -210,7 +213,10 @@ class FileUtils {
             return arrayListOf()
         }
 
-        suspend fun getFilePathFromPickerIntent(data: Intent?, temporaryImageFilePath: File?): String? {
+        suspend fun getFilePathFromPickerIntent(
+            data: Intent?,
+            temporaryImageFilePath: File?
+        ): String? {
             var filePath: String? = null
             if (data != null) {
                 val clipData = data.clipData
@@ -450,9 +456,11 @@ class FileUtils {
                         file
                     )
                 }
+
                 path.startsWith("content://") -> {
                     contentUri = Uri.parse(path)
                 }
+
                 else -> {
                     val file = File(path)
                     contentUri = try {
@@ -463,9 +471,11 @@ class FileUtils {
                         )
                     } catch (e: Exception) {
                         Log.e(
-                            "[Chat Message] Couldn't get URI for file $file using file provider ${context.getString(
+                            "[Chat Message] Couldn't get URI for file $file using file provider ${
+                            context.getString(
                                 R.string.file_provider
-                            )}"
+                            )
+                            }"
                         )
                         Uri.parse(path)
                     }

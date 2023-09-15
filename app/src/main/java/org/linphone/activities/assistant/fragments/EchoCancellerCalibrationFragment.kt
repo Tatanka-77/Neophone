@@ -30,7 +30,8 @@ import org.linphone.core.tools.Log
 import org.linphone.databinding.AssistantEchoCancellerCalibrationFragmentBinding
 import org.linphone.utils.PermissionHelper
 
-class EchoCancellerCalibrationFragment : GenericFragment<AssistantEchoCancellerCalibrationFragmentBinding>() {
+class EchoCancellerCalibrationFragment :
+    GenericFragment<AssistantEchoCancellerCalibrationFragmentBinding>() {
     companion object {
         const val RECORD_AUDIO_PERMISSION_REQUEST_CODE = 0
     }

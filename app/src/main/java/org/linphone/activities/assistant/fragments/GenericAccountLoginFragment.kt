@@ -61,7 +61,8 @@ class GenericAccountLoginFragment : GenericFragment<AssistantGenericAccountLogin
             viewLifecycleOwner
         ) {
             it.consume {
-                val isLinphoneAccount = viewModel.domain.value.orEmpty() == corePreferences.defaultDomain
+                val isLinphoneAccount =
+                    viewModel.domain.value.orEmpty() == corePreferences.defaultDomain
                 coreContext.newAccountConfigured(isLinphoneAccount)
 
                 if (coreContext.core.isEchoCancellerCalibrationRequired) {

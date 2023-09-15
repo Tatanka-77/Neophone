@@ -64,7 +64,9 @@ class SettingsFragment : SecureFragment<SettingsFragmentBinding>() {
 
         /* Shared view model & sliding pane related */
 
-        view.doOnPreDraw { sharedViewModel.isSlidingPaneSlideable.value = binding.slidingPane.isSlideable }
+        view.doOnPreDraw {
+            sharedViewModel.isSlidingPaneSlideable.value = binding.slidingPane.isSlideable
+        }
 
         // Account settings loading can take some time, so wait until it is ready before opening the pane
         sharedViewModel.accountSettingsFragmentOpenedEvent.observe(
