@@ -123,7 +123,7 @@
     <string name="service_auto_start_description">&appName; è stato avviato automaticamente</string>
     <string name="chat_settings_auto_download_never">Mai</string>
     <string name="chat_settings_auto_download_max_size_summary">in byte</string>
-    <string name="about_privacy_policy"> Neomedia Srl, Viale del Fante 44/a Palermo (PA) TEL: 091516511 </string>
+    <string name="about_privacy_policy"> Neomedia srl</string>
     <string name="assistant_choose_country">Scegli una nazione</string>
     <string name="network_settings_wifi_only_title">Usa solo Wi-Fi</string>
     <string name="network_settings_allow_ipv6_title">Permetti IPv6</string>
