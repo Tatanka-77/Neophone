@@ -16,16 +16,16 @@
 
         <ImageView
             android:id="@+id/led"
-            android:background="@drawable/led_background"
-            android:padding="@dimen/contact_presence_badge_padding"
-            android:src="@{data.iconResource, default=@drawable/led_not_registered}"
-            android:contentDescription="@{data.iconContentDescription}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:background="@drawable/led_background"
+            android:contentDescription="@{data.iconContentDescription}"
+            android:padding="@dimen/contact_presence_badge_padding"
+            android:src="@{data.iconResource, default=@drawable/led_not_registered}" />
 
         <org.linphone.views.MarqueeTextView
             android:id="@+id/settings_title"
