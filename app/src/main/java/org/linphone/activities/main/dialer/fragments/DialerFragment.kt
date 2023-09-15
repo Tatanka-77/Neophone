@@ -43,7 +43,6 @@ import org.linphone.activities.main.MainActivity
 import org.linphone.activities.main.dialer.viewmodels.DialerViewModel
 import org.linphone.activities.main.fragments.SecureFragment
 import org.linphone.activities.main.viewmodels.DialogViewModel
-import org.linphone.activities.navigateToConferenceScheduling
 import org.linphone.activities.navigateToConfigFileViewer
 import org.linphone.activities.navigateToContacts
 import org.linphone.compatibility.Compatibility
@@ -101,13 +100,6 @@ class DialerFragment : SecureFragment<DialerFragmentBinding>() {
                 R.id.dialerFragment
             )
             navigateToContacts(viewModel.enteredUri.value)
-        }
-
-        binding.setNewConferenceClickListener {
-            sharedViewModel.updateDialerAnimationsBasedOnDestination.value = Event(
-                R.id.conferenceSchedulingFragment
-            )
-            navigateToConferenceScheduling()
         }
 
         binding.setTransferCallClickListener {

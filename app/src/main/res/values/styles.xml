@@ -42,7 +42,7 @@
         <item name="dividerColor">@color/light_grey_color</item>
 
         <item name="drawableTintColor">@color/dark_grey_color</item>
-        <item name="drawableBackgroundColor">@color/chat_bubble_file_background_color</item>
+        <item name="drawableBackgroundColor">@color/white_color</item>
         <item name="drawableTintDisabledColor">@color/disabled_color</item>
         <item name="drawableTintOverColor">@color/primary_color</item>
         <item name="drawableTintColor2">@color/white_color</item>
@@ -320,42 +320,6 @@
     <style name="contact_edit_form_label_font" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@color/light_grey_color</item>
         <item name="android:textSize">13sp</item>
-    </style>
-
-    <!-- Chat related -->
-
-    <style name="chat_room_last_updated_time_font" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@color/primary_color</item>
-        <item name="android:textSize">16sp</item>
-        <item name="autoSizeTextType">uniform</item>
-        <item name="autoSizeMinTextSize">8sp</item>
-        <item name="autoSizeMaxTextSize">16sp</item>
-        <item name="autoSizeStepGranularity">@dimen/settings_granularity_step</item>
-    </style>
-
-    <style name="chat_message_reply_sender_font">
-        <item name="android:textColor">@color/light_primary_text_color</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-    </style>
-
-    <style name="chat_message_reply_font">
-        <item name="android:textColor">@color/light_primary_text_color</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="chat_message_reply_forward_indicator_font">
-        <item name="android:textColor">@color/chat_bubble_text_color</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:lineSpacingExtra">3.3sp</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="chat_message_emoji_reaction_font">
-        <item name="android:textSize">@dimen/chat_message_emoji_reaction_font_size</item>
-        <item name="android:textColor">?attr/primaryTextColor</item>
     </style>
 
     <!-- Dialog related -->

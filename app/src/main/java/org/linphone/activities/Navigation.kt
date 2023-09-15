@@ -183,13 +183,6 @@ internal fun DialerFragment.navigateToConfigFileViewer() {
     )
 }
 
-internal fun DialerFragment.navigateToConferenceScheduling() {
-    findMasterNavController().navigate(
-        R.id.action_global_conferenceSchedulingFragment,
-        null,
-        popupTo()
-    )
-}
 /* Contacts related */
 
 internal fun MasterContactsFragment.navigateToContact() {

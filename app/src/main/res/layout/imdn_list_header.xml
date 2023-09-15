@@ -25,22 +25,6 @@
             android:background="@color/header_background_color"
             android:gravity="center"
             android:orientation="horizontal">
-
-            <TextView
-                android:text="@{title, default=@string/chat_message_imdn_displayed}"
-                android:textColor="@{ContextCompat.getColor(context,textColor)}"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:contentDescription="@{title}"
-                android:src="@{icon, default=@drawable/chat_read}" />
-
         </LinearLayout>
 
         <View

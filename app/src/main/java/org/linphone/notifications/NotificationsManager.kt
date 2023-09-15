@@ -31,9 +31,7 @@ import android.webkit.MimeTypeMap
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.Person
-import androidx.core.app.RemoteInput
 import androidx.core.content.ContextCompat
-import androidx.core.content.LocusIdCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.navigation.NavDeepLinkBuilder
 import org.linphone.LinphoneApplication.Companion.coreContext
@@ -1005,108 +1003,6 @@ class NotificationsManager(private val context: Context) {
 
     /* Notifications */
 
-    private fun createMessageNotification(
-        notifiable: Notifiable,
-        pendingIntent: PendingIntent,
-        bubbleIntent: PendingIntent,
-        id: String,
-        me: Person
-    ): Notification {
-        val style = NotificationCompat.MessagingStyle(me)
-        val allPersons = arrayListOf<Person>()
-
-        var lastPersonAvatar: Bitmap? = null
-        var lastPerson: Person? = null
-        for (message in notifiable.messages) {
-            val friend = message.friend
-            val person = getPerson(friend, message.sender, message.senderAvatar)
-
-            if (!message.isOutgoing) {
-                // We don't want to see our own avatar
-                lastPerson = person
-                lastPersonAvatar = message.senderAvatar
-
-                if (allPersons.find { it.key == person.key } == null) {
-                    allPersons.add(person)
-                }
-            }
-
-            val senderPerson = if (message.isOutgoing) null else person // Use null for ourselves
-            val msg = if (corePreferences.hideChatMessageContentInNotification) {
-                NotificationCompat.MessagingStyle.Message(
-                    AppUtils.getString(R.string.chat_message_notification_hidden_content),
-                    message.time,
-                    senderPerson
-                )
-            } else {
-                val tmp = NotificationCompat.MessagingStyle.Message(
-                    message.message,
-                    message.time,
-                    senderPerson
-                )
-                if (message.filePath != null) tmp.setData(message.fileMime, message.filePath)
-                tmp
-            }
-
-            style.addMessage(msg)
-            if (message.isOutgoing) {
-                style.addHistoricMessage(msg)
-            }
-        }
-
-        style.conversationTitle = if (notifiable.isGroup) notifiable.groupTitle else lastPerson?.name
-        style.isGroupConversation = notifiable.isGroup
-
-        val icon = lastPerson?.icon ?: coreContext.contactsManager.contactAvatar
-        val bubble = NotificationCompat.BubbleMetadata.Builder(bubbleIntent, icon)
-            .setDesiredHeightResId(R.dimen.chat_message_bubble_desired_height)
-            .build()
-
-        val largeIcon = if (notifiable.isGroup) coreContext.contactsManager.groupBitmap else lastPersonAvatar
-        val notificationBuilder = NotificationCompat.Builder(
-            context,
-            context.getString(R.string.notification_channel_chat_id)
-        )
-            .setSmallIcon(R.drawable.topbar_chat_notification)
-            .setAutoCancel(true)
-            .setLargeIcon(largeIcon)
-            .setColor(ContextCompat.getColor(context, R.color.primary_color))
-            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-            .setGroup(CHAT_NOTIFICATIONS_GROUP)
-            .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
-            .setNumber(notifiable.messages.size)
-            .setWhen(System.currentTimeMillis())
-            .setShowWhen(true)
-            .setStyle(style)
-            .addAction(getReplyMessageAction(notifiable))
-            .addAction(getMarkMessageAsReadAction(notifiable))
-            .setShortcutId(id)
-            .setLocusId(LocusIdCompat(id))
-
-        for (person in allPersons) {
-            notificationBuilder.addPerson(person)
-        }
-
-        if (!corePreferences.preventInterfaceFromShowingUp) {
-            notificationBuilder.setContentIntent(pendingIntent)
-        }
-
-        if (corePreferences.markAsReadUponChatMessageNotificationDismissal) {
-            Log.i(
-                "[Notifications Manager] Chat room will be marked as read when notification will be dismissed"
-            )
-            notificationBuilder
-                .setDeleteIntent(getMarkMessageAsReadPendingIntent(notifiable))
-        }
-
-        if (!Compatibility.canChatMessageChannelBubble(context)) {
-            Log.w("[Notifications Manager] This conversation wasn't granted bubble permission yet")
-        }
-        // We still need to set the bubbleMetadata, otherwise user won't ever be able to enable bubbles!
-        notificationBuilder.bubbleMetadata = bubble
-        return notificationBuilder.build()
-    }
-
     /* Notifications actions */
 
     fun getCallAnswerPendingIntent(notifiable: Notifiable): PendingIntent {
@@ -1155,37 +1051,6 @@ class NotificationsManager(private val context: Context) {
             .build()
     }
 
-    private fun getReplyMessageAction(notifiable: Notifiable): NotificationCompat.Action {
-        val replyLabel =
-            context.resources.getString(R.string.received_chat_notification_reply_label)
-        val remoteInput =
-            RemoteInput.Builder(KEY_TEXT_REPLY).setLabel(replyLabel).build()
-
-        val replyIntent = Intent(context, NotificationBroadcastReceiver::class.java)
-        replyIntent.action = INTENT_REPLY_NOTIF_ACTION
-        replyIntent.putExtra(INTENT_NOTIF_ID, notifiable.notificationId)
-        replyIntent.putExtra(INTENT_LOCAL_IDENTITY, notifiable.localIdentity)
-        replyIntent.putExtra(INTENT_REMOTE_ADDRESS, notifiable.remoteAddress)
-
-        // PendingIntents attached to actions with remote inputs must be mutable
-        val replyPendingIntent = PendingIntent.getBroadcast(
-            context,
-            notifiable.notificationId,
-            replyIntent,
-            Compatibility.getUpdateCurrentPendingIntentFlag()
-        )
-        return NotificationCompat.Action.Builder(
-            R.drawable.chat_send_over,
-            context.getString(R.string.received_chat_notification_reply_label),
-            replyPendingIntent
-        )
-            .addRemoteInput(remoteInput)
-            .setAllowGeneratedReplies(true)
-            .setShowsUserInterface(false)
-            .setSemanticAction(NotificationCompat.Action.SEMANTIC_ACTION_REPLY)
-            .build()
-    }
-
     private fun getMarkMessageAsReadPendingIntent(notifiable: Notifiable): PendingIntent {
         val markAsReadIntent = Intent(context, NotificationBroadcastReceiver::class.java)
         markAsReadIntent.action = INTENT_MARK_AS_READ_ACTION
@@ -1199,17 +1064,5 @@ class NotificationsManager(private val context: Context) {
             markAsReadIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-    }
-
-    private fun getMarkMessageAsReadAction(notifiable: Notifiable): NotificationCompat.Action {
-        val markAsReadPendingIntent = getMarkMessageAsReadPendingIntent(notifiable)
-        return NotificationCompat.Action.Builder(
-            R.drawable.chat_send_over,
-            context.getString(R.string.received_chat_notification_mark_as_read_label),
-            markAsReadPendingIntent
-        )
-            .setShowsUserInterface(false)
-            .setSemanticAction(NotificationCompat.Action.SEMANTIC_ACTION_MARK_AS_READ)
-            .build()
     }
 }
