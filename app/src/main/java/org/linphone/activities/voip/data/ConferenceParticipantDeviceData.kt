@@ -24,7 +24,10 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.contact.GenericContactData
-import org.linphone.core.*
+import org.linphone.core.MediaDirection
+import org.linphone.core.ParticipantDevice
+import org.linphone.core.ParticipantDeviceListenerStub
+import org.linphone.core.StreamType
 import org.linphone.core.tools.Log
 
 class ConferenceParticipantDeviceData(

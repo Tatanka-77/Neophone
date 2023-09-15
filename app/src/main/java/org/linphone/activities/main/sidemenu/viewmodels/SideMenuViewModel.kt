@@ -25,7 +25,11 @@ import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.activities.main.settings.SettingListenerStub
 import org.linphone.activities.main.settings.viewmodels.AccountSettingsViewModel
-import org.linphone.core.*
+import org.linphone.core.Account
+import org.linphone.core.ConsolidatedPresence
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.RegistrationState
 import org.linphone.utils.LinphoneUtils
 
 class SideMenuViewModel : ViewModel() {

@@ -23,7 +23,11 @@ import androidx.lifecycle.MutableLiveData
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.R
 import org.linphone.activities.main.viewmodels.StatusViewModel
-import org.linphone.core.*
+import org.linphone.core.Call
+import org.linphone.core.CallStats
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.MediaEncryption
 import org.linphone.utils.Event
 
 class StatusViewModel : StatusViewModel() {

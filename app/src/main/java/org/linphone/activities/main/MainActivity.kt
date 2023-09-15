@@ -48,15 +48,24 @@ import com.google.android.material.snackbar.Snackbar
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import kotlin.math.abs
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.activities.*
+import org.linphone.activities.GenericActivity
+import org.linphone.activities.SnackBarActivity
 import org.linphone.activities.assistant.AssistantActivity
 import org.linphone.activities.main.viewmodels.CallOverlayViewModel
 import org.linphone.activities.main.viewmodels.DialogViewModel
 import org.linphone.activities.main.viewmodels.SharedMainViewModel
+import org.linphone.activities.navigateToChatRoom
+import org.linphone.activities.navigateToChatRooms
+import org.linphone.activities.navigateToContact
+import org.linphone.activities.navigateToContacts
 import org.linphone.activities.navigateToDialer
 import org.linphone.compatibility.Compatibility
 import org.linphone.contact.ContactsUpdatedListenerStub
@@ -67,7 +76,15 @@ import org.linphone.core.CoreListenerStub
 import org.linphone.core.CorePreferences
 import org.linphone.core.tools.Log
 import org.linphone.databinding.MainActivityBinding
-import org.linphone.utils.*
+import org.linphone.utils.AppUtils
+import org.linphone.utils.DialogUtils
+import org.linphone.utils.Event
+import org.linphone.utils.FileUtils
+import org.linphone.utils.LinphoneUtils
+import org.linphone.utils.PermissionHelper
+import org.linphone.utils.ShortcutsHelper
+import org.linphone.utils.hideKeyboard
+import org.linphone.utils.setKeyboardInsetListener
 
 class MainActivity : GenericActivity(), SnackBarActivity, NavController.OnDestinationChangedListener {
     private lateinit var binding: MainActivityBinding

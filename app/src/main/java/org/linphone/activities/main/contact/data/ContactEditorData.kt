@@ -30,7 +30,8 @@ import kotlinx.coroutines.CoroutineScope
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.contact.*
+import org.linphone.contact.ContactDataInterface
+import org.linphone.contact.NativeContactEditor
 import org.linphone.core.ChatRoom.SecurityLevel
 import org.linphone.core.ConsolidatedPresence
 import org.linphone.core.Friend

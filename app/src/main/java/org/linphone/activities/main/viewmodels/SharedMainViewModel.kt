@@ -24,7 +24,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.activities.main.history.data.GroupedCallLogData
-import org.linphone.core.*
+import org.linphone.core.Address
+import org.linphone.core.ChatMessage
+import org.linphone.core.ChatRoom
+import org.linphone.core.Content
+import org.linphone.core.Friend
 import org.linphone.utils.Event
 
 class SharedMainViewModel : ViewModel() {

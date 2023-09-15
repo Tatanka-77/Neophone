@@ -26,7 +26,11 @@ import androidx.lifecycle.ViewModel
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.core.*
+import org.linphone.core.Call
+import org.linphone.core.ChatMessage
+import org.linphone.core.ChatRoom
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
 import org.linphone.utils.AppUtils
 
 class TabsViewModel : ViewModel() {

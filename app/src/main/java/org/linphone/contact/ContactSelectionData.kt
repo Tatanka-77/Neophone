@@ -22,7 +22,12 @@ package org.linphone.contact
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import org.linphone.LinphoneApplication.Companion.coreContext
-import org.linphone.core.*
+import org.linphone.core.Address
+import org.linphone.core.ChatRoom
+import org.linphone.core.ConsolidatedPresence
+import org.linphone.core.Friend
+import org.linphone.core.PresenceBasicStatus
+import org.linphone.core.SearchResult
 import org.linphone.utils.LinphoneUtils
 
 class ContactSelectionData(private val searchResult: SearchResult) : ContactDataInterface {

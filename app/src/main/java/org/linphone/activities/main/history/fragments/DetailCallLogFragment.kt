@@ -24,10 +24,14 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.R
-import org.linphone.activities.*
-import org.linphone.activities.main.*
+import org.linphone.activities.GenericFragment
+import org.linphone.activities.main.MainActivity
 import org.linphone.activities.main.history.viewmodels.CallLogViewModel
+import org.linphone.activities.navigateToChatRoom
 import org.linphone.activities.navigateToContacts
+import org.linphone.activities.navigateToDialer
+import org.linphone.activities.navigateToFriend
+import org.linphone.activities.navigateToNativeContact
 import org.linphone.core.tools.Log
 import org.linphone.databinding.HistoryDetailFragmentBinding
 import org.linphone.utils.Event

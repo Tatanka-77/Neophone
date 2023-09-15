@@ -30,7 +30,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import org.linphone.R
-import org.linphone.activities.assistant.fragments.*
+import org.linphone.activities.assistant.fragments.GenericAccountLoginFragment
+import org.linphone.activities.assistant.fragments.WelcomeFragment
 import org.linphone.activities.main.MainActivity
 import org.linphone.activities.main.contact.fragments.ContactEditorFragment
 import org.linphone.activities.main.contact.fragments.DetailContactFragment
@@ -39,10 +40,16 @@ import org.linphone.activities.main.dialer.fragments.DialerFragment
 import org.linphone.activities.main.fragments.TabsFragment
 import org.linphone.activities.main.history.fragments.DetailCallLogFragment
 import org.linphone.activities.main.history.fragments.MasterCallLogsFragment
-import org.linphone.activities.main.settings.fragments.*
+import org.linphone.activities.main.settings.fragments.AccountSettingsFragment
+import org.linphone.activities.main.settings.fragments.ContactsSettingsFragment
+import org.linphone.activities.main.settings.fragments.SettingsFragment
 import org.linphone.activities.main.sidemenu.fragments.SideMenuFragment
 import org.linphone.activities.voip.CallActivity
-import org.linphone.activities.voip.fragments.*
+import org.linphone.activities.voip.fragments.ConferenceCallFragment
+import org.linphone.activities.voip.fragments.ConferenceParticipantsFragment
+import org.linphone.activities.voip.fragments.IncomingCallFragment
+import org.linphone.activities.voip.fragments.OutgoingCallFragment
+import org.linphone.activities.voip.fragments.SingleCallFragment
 import org.linphone.core.tools.Log
 
 internal fun Fragment.findMasterNavController(): NavController {

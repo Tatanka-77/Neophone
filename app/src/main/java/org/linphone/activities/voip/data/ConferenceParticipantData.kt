@@ -21,7 +21,8 @@ package org.linphone.activities.voip.data
 
 import androidx.lifecycle.MutableLiveData
 import org.linphone.contact.GenericContactData
-import org.linphone.core.*
+import org.linphone.core.Conference
+import org.linphone.core.Participant
 import org.linphone.core.tools.Log
 import org.linphone.utils.LinphoneUtils
 

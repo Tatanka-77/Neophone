@@ -30,7 +30,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
-import java.lang.Exception
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -38,7 +37,12 @@ import kotlinx.coroutines.withContext
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.core.*
+import org.linphone.core.Address
+import org.linphone.core.Factory
+import org.linphone.core.Friend
+import org.linphone.core.GlobalState
+import org.linphone.core.RegistrationState
+import org.linphone.core.SubscribePolicy
 import org.linphone.core.tools.Log
 import org.linphone.utils.AppUtils
 import org.linphone.utils.PhoneNumberUtils

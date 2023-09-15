@@ -21,11 +21,19 @@ package org.linphone.contact
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.activities.main.viewmodels.MessageNotifierViewModel
-import org.linphone.core.*
+import org.linphone.core.Address
+import org.linphone.core.Ldap
+import org.linphone.core.MagicSearch
+import org.linphone.core.MagicSearchListenerStub
+import org.linphone.core.SearchResult
 import org.linphone.core.tools.Log
 import org.linphone.utils.Event
 

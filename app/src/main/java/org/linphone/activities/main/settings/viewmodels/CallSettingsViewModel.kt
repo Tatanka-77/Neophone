@@ -22,7 +22,7 @@ package org.linphone.activities.main.settings.viewmodels
 import android.os.Vibrator
 import androidx.lifecycle.MutableLiveData
 import java.io.File
-import java.util.*
+import java.util.Locale
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.R
 import org.linphone.activities.main.settings.SettingListenerStub

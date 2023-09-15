@@ -28,8 +28,8 @@ import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.ViewModelProvider
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.R
-import org.linphone.activities.*
-import org.linphone.activities.main.*
+import org.linphone.activities.GenericFragment
+import org.linphone.activities.main.MainActivity
 import org.linphone.activities.main.contact.viewmodels.ContactViewModel
 import org.linphone.activities.main.contact.viewmodels.ContactViewModelFactory
 import org.linphone.activities.main.viewmodels.DialogViewModel

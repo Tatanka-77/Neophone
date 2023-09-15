@@ -20,7 +20,6 @@
 package org.linphone.activities.main.settings.viewmodels
 
 import androidx.lifecycle.MutableLiveData
-import java.lang.NumberFormatException
 import org.linphone.R
 import org.linphone.activities.main.settings.SettingListenerStub
 import org.linphone.utils.Event

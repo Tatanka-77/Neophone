@@ -20,7 +20,9 @@
 package org.linphone.activities.main.contact.fragments
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import org.linphone.R
 import org.linphone.activities.main.contact.adapters.SyncAccountAdapter

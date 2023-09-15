@@ -32,8 +32,9 @@ import java.util.UnknownFormatConversionException
 import java.util.regex.Pattern
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.activities.*
+import org.linphone.activities.GenericFragment
 import org.linphone.activities.assistant.viewmodels.WelcomeViewModel
+import org.linphone.activities.navigateToGenericLoginWarning
 import org.linphone.core.tools.Log
 import org.linphone.databinding.AssistantWelcomeFragmentBinding
 

@@ -38,7 +38,15 @@ import java.io.IOException
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.core.*
+import org.linphone.core.Address
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.Friend
+import org.linphone.core.FriendList
+import org.linphone.core.FriendListListenerStub
+import org.linphone.core.MagicSearch
+import org.linphone.core.PresenceBasicStatus
+import org.linphone.core.SearchResult
 import org.linphone.core.tools.Log
 import org.linphone.utils.ImageUtils
 import org.linphone.utils.LinphoneUtils

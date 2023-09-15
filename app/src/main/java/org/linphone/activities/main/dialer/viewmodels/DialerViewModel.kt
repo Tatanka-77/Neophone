@@ -29,7 +29,12 @@ import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.activities.main.dialer.NumpadDigitListener
 import org.linphone.activities.main.viewmodels.LogsUploadViewModel
 import org.linphone.compatibility.Compatibility
-import org.linphone.core.*
+import org.linphone.core.Account
+import org.linphone.core.Call
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.RegistrationState
+import org.linphone.core.VersionUpdateCheckResult
 import org.linphone.core.tools.Log
 import org.linphone.utils.Event
 import org.linphone.utils.LinphoneUtils

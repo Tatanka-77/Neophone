@@ -22,7 +22,9 @@ package org.linphone.utils
 import android.content.ContentResolver
 import android.net.Uri
 import android.provider.ContactsContract
-import java.io.*
+import java.io.ByteArrayInputStream
+import java.io.FileOutputStream
+import java.io.IOException
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.core.tools.Log
 

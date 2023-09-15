@@ -24,7 +24,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navGraphViewModels
-import java.util.*
+import java.util.Locale
 import org.linphone.R
 import org.linphone.activities.GenericFragment
 import org.linphone.activities.main.viewmodels.DialogViewModel

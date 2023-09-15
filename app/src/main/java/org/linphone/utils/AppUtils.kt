@@ -34,7 +34,7 @@ import androidx.media.AudioFocusRequestCompat
 import androidx.media.AudioManagerCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import java.util.*
+import java.util.Locale
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.R
 import org.linphone.activities.main.viewmodels.SharedMainViewModel

@@ -21,7 +21,11 @@ package org.linphone.activities.voip.data
 
 import androidx.lifecycle.MutableLiveData
 import org.linphone.contact.GenericContactData
-import org.linphone.core.*
+import org.linphone.core.Call
+import org.linphone.core.CallListenerStub
+import org.linphone.core.CallStats
+import org.linphone.core.MediaEncryption
+import org.linphone.core.StreamType
 
 class CallStatisticsData(val call: Call) : GenericContactData(call.remoteAddress) {
     val audioStats = MutableLiveData<ArrayList<StatItemData>>()

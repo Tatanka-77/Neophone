@@ -33,7 +33,6 @@ import com.google.android.material.transition.MaterialSharedAxis
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.activities.*
 import org.linphone.activities.clearDisplayedCallHistory
 import org.linphone.activities.main.MainActivity
 import org.linphone.activities.main.fragments.MasterFragment
@@ -43,11 +42,19 @@ import org.linphone.activities.main.history.viewmodels.CallLogsListViewModel
 import org.linphone.activities.main.viewmodels.DialogViewModel
 import org.linphone.activities.main.viewmodels.TabsViewModel
 import org.linphone.activities.navigateToCallHistory
+import org.linphone.activities.navigateToConferenceWaitingRoom
 import org.linphone.activities.navigateToDialer
 import org.linphone.core.ConferenceInfo
 import org.linphone.core.tools.Log
 import org.linphone.databinding.HistoryMasterFragmentBinding
-import org.linphone.utils.*
+import org.linphone.utils.AppUtils
+import org.linphone.utils.DialogUtils
+import org.linphone.utils.Event
+import org.linphone.utils.LinphoneUtils
+import org.linphone.utils.RecyclerViewHeaderDecoration
+import org.linphone.utils.RecyclerViewSwipeConfiguration
+import org.linphone.utils.RecyclerViewSwipeListener
+import org.linphone.utils.RecyclerViewSwipeUtils
 
 class MasterCallLogsFragment : MasterFragment<HistoryMasterFragmentBinding, CallLogsListAdapter>() {
     override val dialogConfirmationMessageBeforeRemoval = R.plurals.history_delete_dialog

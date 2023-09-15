@@ -21,13 +21,19 @@ package org.linphone.activities.main.history.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Calendar
+import java.util.Locale
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
 import org.linphone.contact.GenericContactViewModel
-import org.linphone.core.*
+import org.linphone.core.Call
+import org.linphone.core.CallLog
+import org.linphone.core.ChatRoom
+import org.linphone.core.ChatRoomListenerStub
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.Friend
 import org.linphone.core.tools.Log
 import org.linphone.utils.AppUtils
 import org.linphone.utils.Event

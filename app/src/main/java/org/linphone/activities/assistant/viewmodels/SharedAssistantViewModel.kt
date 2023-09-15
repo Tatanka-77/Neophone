@@ -21,10 +21,10 @@ package org.linphone.activities.assistant.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.*
+import java.util.Locale
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
-import org.linphone.core.*
+import org.linphone.core.AccountCreator
 import org.linphone.core.tools.Log
 
 class SharedAssistantViewModel : ViewModel() {

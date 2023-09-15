@@ -20,7 +20,7 @@
 package org.linphone.activities.voip.data
 
 import org.linphone.contact.GenericContactData
-import org.linphone.core.*
+import org.linphone.core.Address
 import org.linphone.utils.LinphoneUtils
 
 class ConferenceInfoParticipantData(

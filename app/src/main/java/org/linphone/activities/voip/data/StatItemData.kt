@@ -22,7 +22,12 @@ package org.linphone.activities.voip.data
 import androidx.lifecycle.MutableLiveData
 import java.text.DecimalFormat
 import org.linphone.R
-import org.linphone.core.*
+import org.linphone.core.Address
+import org.linphone.core.AudioDevice
+import org.linphone.core.Call
+import org.linphone.core.CallStats
+import org.linphone.core.MediaEncryption
+import org.linphone.core.StreamType
 import org.linphone.utils.AppUtils
 
 enum class StatType(val nameResource: Int) {

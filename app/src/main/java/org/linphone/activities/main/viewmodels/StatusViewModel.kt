@@ -21,10 +21,15 @@ package org.linphone.activities.main.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.*
+import java.util.Locale
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.R
-import org.linphone.core.*
+import org.linphone.core.Account
+import org.linphone.core.Content
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.Event
+import org.linphone.core.RegistrationState
 import org.linphone.core.tools.Log
 
 open class StatusViewModel : ViewModel() {

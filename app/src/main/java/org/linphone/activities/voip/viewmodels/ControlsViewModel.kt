@@ -29,10 +29,17 @@ import androidx.window.layout.FoldingFeature
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
 import org.linphone.R
-import org.linphone.core.*
+import org.linphone.core.AudioDevice
+import org.linphone.core.Call
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.MediaDirection
 import org.linphone.core.tools.Log
-import org.linphone.utils.*
+import org.linphone.utils.AppUtils
+import org.linphone.utils.AudioRouteUtils
 import org.linphone.utils.Event
+import org.linphone.utils.FileUtils
+import org.linphone.utils.PermissionHelper
 
 class ControlsViewModel : ViewModel() {
     val isSpeakerSelected = MutableLiveData<Boolean>()

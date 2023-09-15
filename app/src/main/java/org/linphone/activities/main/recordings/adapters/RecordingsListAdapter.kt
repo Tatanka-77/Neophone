@@ -34,7 +34,8 @@ import org.linphone.activities.main.recordings.data.RecordingData
 import org.linphone.activities.main.viewmodels.ListTopBarViewModel
 import org.linphone.databinding.GenericListHeaderBinding
 import org.linphone.databinding.RecordingListCellBinding
-import org.linphone.utils.*
+import org.linphone.utils.HeaderAdapter
+import org.linphone.utils.TimestampUtils
 
 class RecordingsListAdapter(
     selectionVM: ListTopBarViewModel,

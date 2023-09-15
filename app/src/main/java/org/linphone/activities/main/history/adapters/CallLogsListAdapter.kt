@@ -34,7 +34,9 @@ import org.linphone.activities.main.history.data.GroupedCallLogData
 import org.linphone.activities.main.viewmodels.ListTopBarViewModel
 import org.linphone.databinding.GenericListHeaderBinding
 import org.linphone.databinding.HistoryListCellBinding
-import org.linphone.utils.*
+import org.linphone.utils.Event
+import org.linphone.utils.HeaderAdapter
+import org.linphone.utils.TimestampUtils
 
 class CallLogsListAdapter(
     selectionVM: ListTopBarViewModel,

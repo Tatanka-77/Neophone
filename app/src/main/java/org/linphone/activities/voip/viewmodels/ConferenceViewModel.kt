@@ -28,7 +28,14 @@ import org.linphone.R
 import org.linphone.activities.voip.ConferenceDisplayMode
 import org.linphone.activities.voip.data.ConferenceParticipantData
 import org.linphone.activities.voip.data.ConferenceParticipantDeviceData
-import org.linphone.core.*
+import org.linphone.core.Call
+import org.linphone.core.Conference
+import org.linphone.core.ConferenceListenerStub
+import org.linphone.core.Core
+import org.linphone.core.CoreListenerStub
+import org.linphone.core.MediaDirection
+import org.linphone.core.Participant
+import org.linphone.core.ParticipantDevice
 import org.linphone.core.tools.Log
 import org.linphone.utils.AppUtils
 import org.linphone.utils.Event
