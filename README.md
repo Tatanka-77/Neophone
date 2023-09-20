@@ -1,3 +1,5 @@
+[<img src="https://www.neomedia.it/images/logoneomedia_blu.png" height="100" alt="Neomedia">]
+
 Neophone is an open source softphone for voice over IP calling based on Linphone.
 It is fully SIP-based, for all calling.
 
